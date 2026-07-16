@@ -126,6 +126,10 @@ const SERVICES = [
     journey:[["doctor","Pre-travel consult with your doctor","first visit","Book the doctor first. Travel advice works as a pre-consultation: your doctor plans which vaccines you need for your destination."],["nurse","Vaccinations with the nurse","follow-up","The nurse gives your vaccines. Some travel vaccines are not kept in stock and need to be ordered, so you may be rebooked once they arrive."]],
     reasons:["Free seasonal flu vaccine for eligible high-risk patients","Childhood vaccines bulk billed under the national program","Travel health advice for wherever you're headed"],
     note:"Routine and childhood immunisations can be booked directly with the nurse. For travel, always see the doctor first."},
+  {id:"occupational", name:"Occupational Health & WorkCover", cat:"Work health", icon:"clipboard",
+    blurb:"Our doctors provide quality occupational healthcare: pre-employment medicals, drug and alcohol screening, and care for workplace injuries, including treatment and support returning to work.",
+    journey:[["doctor","Book with a doctor","standard","For a workplace injury, pre-employment medical or return-to-work matter, start with a doctor's appointment."],["doctor","Certificate of capacity","same visit","For WorkCover claims, your doctor assesses you and issues a certificate of capacity."],["employer","Lodge with your employer","next step","Give the certificate to your employer and obtain your WorkCover claim number so ongoing treatment can be billed to the claim."]],
+    reasons:["Injury treatment and recovery managed by one doctor","Certificates and paperwork handled properly the first time","Support all the way back to work"]},
   {id:"telehealth", name:"Telehealth Consultation", cat:"Access", icon:"video", telehealth:true, teleOnly:true,
     blurb:"Telehealth keeps quality care within reach when you can't come in. Consultations are available to patients who have seen a doctor face to face within the last 12 months. Please be reachable by phone from 5 minutes before your appointment time.",
     journey:[["doctor","Book a telehealth slot","online","Choose a phone or video appointment that suits you."],["doctor","Consult from home","standard","Speak with your GP for scripts, referrals, results and follow-ups."]],
@@ -157,7 +161,7 @@ function siteLabel(sites){ return sites.map(s => s + ' Whitehorse Rd').join(' & 
 function initials(name){ return name.replace('Dr ','').split(' ').map(w => w[0]).slice(0,2).join(''); }
 
 function journeyHTML(steps){
-  return `<div class="journey">${steps.map(s=>`<div class="jstep ${s[0]}"><div class="jwho">${s[0]==='nurse'?'🩺 With the nurse':(s[0]==='doctor'?'👨‍⚕️ With your doctor':(s[0]==='collector'?'🧪 With the pathology collector':s[1]))} <span class="jtime">${s[2]}</span></div><div class="jwhat"><strong>${s[1]}.</strong> ${s[3]}</div></div>`).join('')}</div>`;
+  return `<div class="journey">${steps.map(s=>`<div class="jstep ${s[0]}"><div class="jwho">${s[0]==='nurse'?'🩺 With the nurse':(s[0]==='doctor'?'👨‍⚕️ With your doctor':(s[0]==='collector'?'🧪 With the pathology collector':(s[0]==='employer'?'💼 With your employer':s[1])))} <span class="jtime">${s[2]}</span></div><div class="jwhat"><strong>${s[1]}.</strong> ${s[3]}</div></div>`).join('')}</div>`;
 }
 function reasonsHTML(list){
   return `<ul class="reasons">${list.map(r=>`<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>${r}</li>`).join('')}</ul>`;
