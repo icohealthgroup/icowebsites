@@ -281,6 +281,7 @@ function showService(id){
       <p>${s.cat}</p>
     </div>
     <div class="fc-pbody">
+      ${s.blurb?`<p class="fc-blurb">${s.blurb}</p>`:''}
       <div class="fc-block"><h4>Your patient journey</h4>${journeyHTML(s.journey)}</div>
       <div class="fc-block"><h4>Why patients consider this</h4>${reasonsHTML(s.reasons)}</div>
       ${s.note?`<div class="fc-block"><div class="fee-flag" style="background:#eef4fd;border-color:#cfe0f5;border-left-color:var(--blue-light);color:#2a3a63">${s.note}</div></div>`:''}

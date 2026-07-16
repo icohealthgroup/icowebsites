@@ -629,3 +629,8 @@ h2{text-transform:none;letter-spacing:-.4px;font-weight:700;font-size:clamp(1.7r
 /* hero badge: room for the full bulk billing eligibility */
 .hero-badge{max-width:200px;line-height:1.25}
 .hero-badge span{margin-top:.3em;line-height:1.35}
+
+/* --- service write-up blurbs --- */
+.sd-blurb{color:var(--copy);font-size:.98rem;max-width:75ch;margin-bottom:1.6rem;padding:1rem 1.3rem;background:var(--panel);border-radius:14px;border-left:4px solid var(--blue-light)}
+.fc-blurb{color:var(--copy);font-size:.92rem;margin-bottom:1.6rem;padding:.9rem 1.1rem;background:var(--panel);border-radius:12px;border-left:4px solid var(--blue-light)}
+.ticks li span{display:inline}
