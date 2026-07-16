@@ -634,3 +634,16 @@ h2{text-transform:none;letter-spacing:-.4px;font-weight:700;font-size:clamp(1.7r
 .sd-blurb{color:var(--copy);font-size:.98rem;max-width:75ch;margin-bottom:1.6rem;padding:1rem 1.3rem;background:var(--panel);border-radius:14px;border-left:4px solid var(--blue-light)}
 .fc-blurb{color:var(--copy);font-size:.92rem;margin-bottom:1.6rem;padding:.9rem 1.1rem;background:var(--panel);border-radius:12px;border-left:4px solid var(--blue-light)}
 .ticks li span{display:inline}
+
+/* --- billing policy popup --- */
+.policy-pop{position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;padding:1.2rem}
+.policy-pop.open{display:flex}
+.pp-backdrop{position:absolute;inset:0;background:rgba(28,33,84,.5);backdrop-filter:blur(3px)}
+.pp-card{position:relative;background:#fff;border-radius:20px;max-width:540px;width:100%;padding:2.2rem 2.4rem;box-shadow:var(--shadow);border-top:6px solid var(--yellow);animation:pop .35s ease}
+.pp-tag{font-family:"Montserrat";font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-light)}
+.pp-card h3{color:var(--blue);font-size:1.25rem;margin:.7rem 0 .8rem}
+.pp-card p{color:var(--copy);font-size:.95rem}
+.pp-close{position:absolute;top:.9rem;right:.9rem;background:var(--panel);border:none;width:38px;height:38px;border-radius:50%;font-size:1.3rem;color:var(--blue);cursor:pointer;line-height:1}
+.pp-close:hover{background:var(--panel-2)}
+.pp-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem}
+@media(prefers-reduced-motion:reduce){.pp-card{animation:none}}

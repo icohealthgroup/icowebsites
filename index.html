@@ -49,7 +49,7 @@
       <li class="has-drop"><a href="about.html">About</a>
         <ul class="drop"><li><a href="about.html">About the Clinic</a></li><li><a href="doctors.html">Our Doctors &amp; Team</a></li></ul>
       </li>
-      <li class="has-drop"><a href="services.html">Services</a><div class="drop drop-mega"><div class="drop-col"><span class="drop-label">GP services</span><a href="services.html#gp">Everyday GP Care</a><a href="services.html#skin">Skin Cancer Checks</a><a href="services.html#svc-health-assessment">Health Assessments</a><a href="services.html#svc-chronic">Chronic Disease Care</a><a href="services.html#svc-mental-health">Mental Health</a><a href="services.html#svc-womens">Women's Health</a><a href="services.html#svc-child">Child Health &amp; Immunisations</a><a href="services.html#travel">Travel Medicine</a></div><div class="drop-col"><span class="drop-label">On-site for you</span><a href="services.html#allied">Allied Health</a><a href="services.html#pharmacy">Pharmacy On-site</a><a href="services.html#pathology">Pathology On-site</a><a href="services.html#afterhours">After-Hours Access</a><a href="telehealth.html">Telehealth</a></div></div></li>
+      <li class="has-drop"><a href="services.html">Services</a><div class="drop drop-mega"><div class="drop-col"><span class="drop-label">GP services</span><a href="services.html#gp">Everyday GP Care</a><a href="services.html#skin">Skin Cancer Checks</a><a href="services.html#svc-health-assessment">Health Assessments</a><a href="services.html#svc-chronic">Chronic Disease Care</a><a href="services.html#svc-mental-health">Mental Health</a><a href="services.html#svc-womens">Women's Health</a><a href="services.html#svc-child">Child Health &amp; Immunisations</a><a href="services.html#travel">Travel Medicine</a><a href="telehealth.html">Telehealth</a></div><div class="drop-col"><span class="drop-label">On-site for you</span><a href="services.html#allied">Allied Health</a><a href="services.html#pharmacy">Pharmacy On-site</a><a href="services.html#pathology">Pathology On-site</a><a href="services.html#afterhours">After-Hours Access</a><a href="services.html#nursing">On-site Nursing Support</a></div></div></li>
       <li><a href="find-care.html">Find Care</a></li><li><a href="telehealth.html">Telehealth</a></li>
       <li><a href="fees.html">Fees</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -69,7 +69,7 @@
   <nav>
     <a href="index.html">Home</a>
     <div class="mm-group"><button>About<span>+</span></button><div class="mm-sub"><a href="about.html">About the Clinic</a><a href="doctors.html">Our Doctors &amp; Team</a></div></div>
-    <div class="mm-group"><button>Services<span>+</span></button><div class="mm-sub"><span class="mm-label">GP services</span><a href="services.html#gp">Everyday GP Care</a><a href="services.html#skin">Skin Cancer Checks</a><a href="services.html#svc-health-assessment">Health Assessments</a><a href="services.html#svc-chronic">Chronic Disease Care</a><a href="services.html#svc-mental-health">Mental Health</a><a href="services.html#svc-womens">Women's Health</a><a href="services.html#svc-child">Child Health &amp; Immunisations</a><a href="services.html#travel">Travel Medicine</a><span class="mm-label">On-site for you</span><a href="services.html#allied">Allied Health</a><a href="services.html#pharmacy">Pharmacy On-site</a><a href="services.html#pathology">Pathology On-site</a><a href="services.html#afterhours">After-Hours Access</a></div></div>
+    <div class="mm-group"><button>Services<span>+</span></button><div class="mm-sub"><span class="mm-label">GP services</span><a href="services.html#gp">Everyday GP Care</a><a href="services.html#skin">Skin Cancer Checks</a><a href="services.html#svc-health-assessment">Health Assessments</a><a href="services.html#svc-chronic">Chronic Disease Care</a><a href="services.html#svc-mental-health">Mental Health</a><a href="services.html#svc-womens">Women's Health</a><a href="services.html#svc-child">Child Health &amp; Immunisations</a><a href="services.html#travel">Travel Medicine</a><span class="mm-label">On-site for you</span><a href="services.html#allied">Allied Health</a><a href="services.html#pharmacy">Pharmacy On-site</a><a href="services.html#pathology">Pathology On-site</a><a href="services.html#afterhours">After-Hours Access</a><a href="services.html#nursing">On-site Nursing Support</a></div></div>
     <a href="find-care.html">Find Care</a>
     <a href="telehealth.html">Telehealth</a>
     <a href="fees.html">Fees &amp; Billing</a>
@@ -375,5 +375,36 @@
 </footer>
 
 <script src="main.js"></script>
+
+<!-- billing policy popup (dismissible, once per browsing session) -->
+<div class="policy-pop" id="policyPop" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+  <div class="pp-backdrop" id="ppBackdrop"></div>
+  <div class="pp-card">
+    <button class="pp-close" id="ppClose" aria-label="Close">&times;</button>
+    <span class="pp-tag">Practice update</span>
+    <h3 id="ppTitle">Billing policy update · Effective 1 July 2026</h3>
+    <p>From 1 July 2026, weekday visits are bulk billed for concession cardholders and children 15 &amp; under. Non-concession patients pay a $42 out-of-pocket fee on weekdays, $50 on Saturdays and $55 on Sundays. A $40 non-rebateable fee applies to missed appointments.</p>
+    <div class="pp-actions">
+      <a class="btn btn-primary" href="fees.html">See the full fee table</a>
+      <button class="btn btn-ghost" id="ppOk" type="button">Got it</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var seen = false;
+  try { seen = !!sessionStorage.getItem('bcmPolicySeen'); } catch(e) {}
+  if (seen) return;
+  var pop = document.getElementById('policyPop');
+  function close(){
+    pop.classList.remove('open');
+    document.body.style.overflow = '';
+    try { sessionStorage.setItem('bcmPolicySeen','1'); } catch(e) {}
+  }
+  setTimeout(function(){ pop.classList.add('open'); document.body.style.overflow = 'hidden'; }, 800);
+  ['ppClose','ppBackdrop','ppOk'].forEach(function(id){ document.getElementById(id).addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>
