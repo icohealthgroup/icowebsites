@@ -605,3 +605,23 @@ h2{text-transform:none;letter-spacing:-.4px;font-weight:700;font-size:clamp(1.7r
 .otm-banner .otm-go{margin-left:auto;flex-shrink:0;padding:9px 18px;border-radius:999px;background:#FE7B6E;color:#000829;font-weight:700;font-size:13px;font-family:"Montserrat"}
 @media(max-width:560px){.otm-banner{flex-wrap:wrap}.otm-banner .otm-go{margin-left:0}}
 @media(prefers-reduced-motion:reduce){.otm-eq i{animation:none;height:14px}}
+
+/* --- grouped services mega dropdown --- */
+.drop-mega{display:flex;gap:.4rem;min-width:520px;padding:.9rem}
+.drop-mega .drop-col{flex:1;display:flex;flex-direction:column}
+.drop-label{font-family:"Montserrat";font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);padding:.4rem .8rem .5rem;border-bottom:1px solid var(--line);margin-bottom:.4rem}
+.drop-mega a{display:block;padding:.48rem .8rem;border-radius:8px;color:var(--copy);font-size:.83rem;font-family:"Montserrat";font-weight:600}
+.drop-mega a:hover{background:var(--panel);color:var(--blue)}
+
+/* mobile menu group labels */
+.mm-label{display:block;font-family:"Montserrat";font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);margin:.8rem 0 .2rem}
+
+/* --- full-width On The Mend band (homepage) --- */
+.otm-banner.otm-wide{max-width:none;border-radius:26px;padding:2.1rem 2.6rem;gap:26px;box-shadow:0 26px 60px -34px rgba(13,43,80,.55)}
+.otm-wide .otm-eq{height:34px}
+.otm-wide .otm-eq i{width:6px}
+@keyframes otmeq{0%,100%{height:8px}50%{height:30px}}
+.otm-wide .otm-copy b{font-size:1.3rem}
+.otm-wide .otm-copy span{font-size:.95rem;margin-top:4px}
+.otm-wide .otm-go{padding:12px 26px;font-size:14px}
+@media(max-width:700px){.otm-banner.otm-wide{padding:1.4rem 1.5rem}}
