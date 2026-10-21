@@ -17,33 +17,74 @@ const BILLING_POLICY = {
   bulkBilled: "Concession cardholders and children 15 and under are bulk billed on weekdays."
 };
 
-/* Doctors - from practice appointment preferences */
+/* Doctors: from balwyncentralmedical.com.au (Doctors @ 427 / @ 411) and the practice's HotDoc
+   profiles, checked 22 Oct 2026. Interests for Firth, Hashemi and Dr J Srishanmuganathan
+   (no HotDoc interests listed) are kept from the practice appointment preferences.
+   role: "General practitioner" or "GP registrar". hours: optional note when a doctor splits sites. */
 const DOCTORS = [
-  {id:"firth", name:"Dr Katherine Firth", sites:["427"], telehealth:true, interests:["Women's health","Skin cancer medicine","Minor procedures","Antenatal shared care"], procedures:["implanon","iud","iron","skin","biopsy","excision","minor"]},
-  {id:"mayadunne", name:"Dr Upuli Mayadunne", sites:["427","411"], telehealth:false, interests:["Women's health & family planning","IUD & Implanon","Skin checks","Iron infusions"], procedures:["implanon","iud","iron","skin","biopsy","excision"]},
-  {id:"sivanesan", name:"Dr Sathiya Sivanesan", sites:["427"], telehealth:false, interests:["Minor surgery","Skin cancer medicine","Musculoskeletal & joint injections","Ingrown toenail surgery","Spirometry"], procedures:["implanon","toenail","iron","skin","biopsy","excision","minor"]},
-  {id:"saadatian", name:"Dr Siavash Saadatian", sites:["427"], telehealth:true, interests:["Skin cancer medicine","Minor surgery","Cysts & lipomas","Fracture & plaster clinic"], procedures:["implanon","iud","skin","biopsy","excision","toenail","minor"]},
-  {id:"patel", name:"Dr Nisha Patel", sites:["427"], telehealth:false, interests:["Women's health","Cervical screening","Antenatal care"], procedures:["implanon","iud","minor"]},
-  {id:"kamale", name:"Dr Avinash Kamale", sites:["427","411"], telehealth:false, interests:["Skin checks","Minor surgery","Fracture & plaster clinic"], procedures:["toenail","skin","biopsy","excision","minor"]},
-  {id:"hashemi", name:"Dr Ela Hashemi", sites:["411"], telehealth:false, interests:["Women's health","Family planning (IUD & Implanon)","Antenatal care"], procedures:["implanon","iud","skin","minor"]},
-  {id:"zhang", name:"Dr Wilson Zhang", sites:["411"], telehealth:true, interests:["Acupuncture","Integrative care"], procedures:["acupuncture","minor"]},
-  {id:"hodgson", name:"Dr Martin Hodgson", sites:["411"], telehealth:false, interests:["General practice","Travel medicine","Minor procedures","Spirometry"], procedures:["minor"]},
-  {id:"lam", name:"Dr Winston Lam", sites:["427","411"], telehealth:true, interests:["General & family medicine","Telehealth","Travel vaccinations"], procedures:["minor"]},
-  {id:"janakan", name:"Dr Janakan Srishanmuganathan", sites:["427"], telehealth:false, interests:["General & family medicine"], procedures:["minor"]},
-  {id:"sayanan", name:"Dr Sayanan Srishanmuganathan", sites:["427"], telehealth:false, interests:["General & family medicine"], procedures:["minor"]},
-  {id:"yang", name:"Dr Katie Yang", sites:["427"], telehealth:false, interests:["General & family medicine","Child health"], procedures:["minor"]},
-  {id:"fam", name:"Dr Han Ling Fam", sites:["427"], telehealth:false, interests:["General & family medicine"], procedures:["minor"]}
+  {id:"saadatian", photo:"images/doctors/saadatian.jpg", name:"Dr Siavash Saadatian", role:"General practitioner", quals:"FRACGP, MD, AMC", sites:["427"], telehealth:true,
+    interests:["Mental health","Skin checks","Excisions & biopsies","Children's health","Chronic disease management","Diabetes"], languages:["Persian (Farsi)"],
+    bio:"Dr Saadatian (Sia) trained in Iran and has worked in Australian general practice since 2013. His interests include mental health, skin cancer, children's health and chronic disease management, particularly diabetes.",
+    procedures:["implanon","iud","skin","biopsy","excision","toenail","minor"]},
+  {id:"firth", photo:"images/doctors/firth.jpg", name:"Dr Katherine Firth", role:"General practitioner", quals:"MBBS, DCH, FRACGP, MMed", sites:["427"], telehealth:true,
+    interests:["Women's health","Child health","Skin cancer medicine","Minor procedures","Antenatal shared care"], languages:[],
+    bio:"Dr Firth has been a specialist GP since 2014, working on the Central Coast of New South Wales and, since 2018, in Melbourne. She enjoys seeing patients of all ages, has postgraduate training in child health and a Masters of Medicine, and is an examiner for the RACGP.",
+    procedures:["implanon","iud","iron","skin","biopsy","excision","minor"]},
+  {id:"sivanesan", photo:"images/doctors/sivanesan.jpg", name:"Dr Sathiya Sivanesan", role:"General practitioner", quals:"MBBS, FRACGP", sites:["427"], telehealth:true,
+    interests:["Mental health","Minor procedures","Ingrown toenails","Chronic disease management","Children's health"], languages:["Tamil","Lithuanian"],
+    bio:"Dr Sivanesan (Sathi) has more than 15 years of medical experience, from rural and remote medicine to trauma, GP anaesthetics and intensive care, and became a Fellow of the RACGP in 2017. He enjoys mental health care, minor procedures including ingrown toenails, chronic disease management and children's health.",
+    procedures:["implanon","toenail","iron","skin","biopsy","excision","minor"]},
+  {id:"patel", photo:"images/doctors/patel.jpg", name:"Dr Nisha Patel", role:"General practitioner", quals:"MBBS, FRACGP", sites:["427"], telehealth:true,
+    interests:["Children's health","Women's health","Sexual health","Implanon & contraception","Cervical screening"], languages:[],
+    bio:"Dr Patel is a UK-trained GP with experience in community general practice, emergency and school settings. She holds postgraduate diplomas in child, women's, sexual and occupational health, and teaches University of Melbourne medical students at the clinic.",
+    procedures:["implanon","iud","minor"]},
+  {id:"kamale", photo:"images/doctors/kamale.jpg", name:"Dr Avinash Kamale", role:"General practitioner", quals:"MBBS, DOMS, DPD (UK), FRACGP", sites:["427","411"], hours:"Weekdays at 411, weekends at 427", telehealth:true,
+    interests:["Skin cancers & mole checks","Excisions & biopsies","Men's health","Travel medicine","General family health"], languages:["Hindi","Marathi"],
+    bio:"Dr Kamale (Avi) is a Fellow of the RACGP with Victorian hospital experience in emergency, general medicine, surgery and orthopaedics. His interests include family health, travel medicine and skin, including skin cancer and mole checks, and he performs minor skin surgery on site.",
+    procedures:["toenail","skin","biopsy","excision","minor"]},
+  {id:"vlam", photo:"images/doctors/vlam.jpg", name:"Dr Vincent Lam", role:"General practitioner", quals:"MD, BMedSt, FRACGP", sites:["427"], telehealth:true,
+    interests:["General family health","WorkCover medicine","Men's health","Paediatrics"], languages:[],
+    bio:"Dr Vincent Lam (Dr Vinny) is a Fellow of the RACGP. He graduated from Bond University in 2020 and has worked in hospitals and clinics on the Gold Coast, in Sydney and in Melbourne. He enjoys family health, WorkCover medicine, men's health and paediatrics.",
+    procedures:[]},
+  {id:"lam", photo:"images/doctors/lam.jpg", name:"Dr Winston Lam", role:"General practitioner", quals:"MD, BBiomed", sites:["427","411"], hours:"Weekdays at 411, weekends at 427", telehealth:true,
+    interests:["Pattern hair loss management","Biostimulators - Rejuran (salmon polynucleotides)","Wrinkle and fine lines management"], languages:[],
+    bio:"Dr Winston Lam is a Specialist General Practitioner with an interest in non-surgical cosmetic procedures, committed to delivering the highest quality care across all aspects of general practice. Dr Winston Lam completed his Bachelor of Biomedicine in 2014 and Doctor of Medicine in 2018 at The University of Melbourne. He is a Fellow of The Royal Australian College of General Practitioners and is certified by the Australian Health Practitioner Regulation Agency. Dr Winston Lam offers a comprehensive and personalised approach to address your specific needs with an emphasis on safety and evidence-based practice.",
+    procedures:["minor"]},
+  {id:"alfayadh", photo:"images/doctors/alfayadh.jpg", name:"Dr Naba Alfayadh", role:"GP registrar", quals:"MBBS (Hons), BMedSci (Hons), SCHP", sites:["427"], telehealth:true,
+    interests:["Mental health","Paediatrics","Women's health","Chronic disease management"], languages:[],
+    bio:"Dr Alfayadh studied medicine at Monash University and worked for several years in adult and paediatric emergency medicine before choosing general practice. She is especially interested in mental health, paediatrics, women's health and chronic disease management. Dr Alfayadh has extra training in mental health and Internal Family Systems (IFS), and offers longer consultations to support physical, mental and social wellbeing over the long term. If you're interested, please book an initial consultation to see if this is a good fit for you. IFS mental health consultations cost $350, with approximately $202 rebated by Medicare.",
+    procedures:[]},
+  {id:"burdick", photo:"images/doctors/burdick.jpg", name:"Dr Christine Burdick", role:"GP registrar", quals:"BN, Grad Cert Child Health, MD", sites:["427"], telehealth:true,
+    interests:["Chronic disease management","Women's health","Paediatrics"], languages:[],
+    bio:"Dr Burdick graduated from the University of Notre Dame Australia in 2019, trained at St Vincent's Hospital Melbourne and most recently worked in adult and paediatric emergency at Casey Hospital. She has a Graduate Certificate in Child Health and enjoys chronic disease care, women's health and paediatrics.",
+    procedures:[]},
+  {id:"hodgson", photo:"images/doctors/hodgson.jpg", name:"Dr Martin Hodgson", role:"General practitioner", quals:"MBBS, GradDipOccH, DipDHM", sites:["411"], telehealth:true,
+    interests:["Sports medicine","Wound care","Child health","Mental health"], languages:[],
+    bio:"Dr Hodgson has more than 30 years of medical experience, including 20 years directing hyperbaric medicine units that treat complex wounds. He has a particular interest in musculoskeletal injuries, wound care, mental health and children's health.",
+    procedures:["minor"]},
+  {id:"zhang", photo:"images/doctors/zhang.jpg", name:"Dr Wilson Zhang", role:"General practitioner", quals:"MBBS, BMedSci, DCH, FRACGP", sites:["411"], telehealth:true,
+    interests:["Medical acupuncture","Warm moxibustion","Implanon insertion & removal"], languages:["Mandarin"],
+    bio:"Dr Zhang graduated from the University of Melbourne in 2010 and has worked in general practice since 2014. He has a particular interest in medical acupuncture and warm moxibustion.",
+    procedures:["acupuncture","implanon","minor"]},
+  {id:"tennakoon", photo:"images/doctors/tennakoon.jpg", name:"Dr Hasanthi Tennakoon", role:"General practitioner", quals:"MBBS, DCH, FRACGP", sites:["411"], telehealth:true,
+    interests:["General medicine","Geriatrics","Women's health","Children's health","Chronic disease management","Menopause care"], languages:[],
+    bio:"Dr Tennakoon is a Fellow of the RACGP with a Diploma of Child Health. She worked at the Austin and Northern hospitals and trained as a GP registrar in Shepparton and regional Victoria. Her interests include general and geriatric medicine, women's and children's health, chronic disease and menopause care, and she performs Implanon insertion and removal.",
+    procedures:["implanon","minor"]},
+  {id:"lui", photo:"images/doctors/lui.jpg", name:"Dr Stephen Lui", role:"GP registrar", quals:"MD", sites:["411"], telehealth:true,
+    interests:["General medicine","Chronic disease management","Mental health","Paediatrics"], languages:["Cantonese (conversational)"],
+    bio:"Dr Lui completed his medical degree at Macquarie University in 2021 and has worked at Sunshine, Footscray, Hornsby and Northern Beaches hospitals. He enjoys all aspects of general practice, especially chronic disease care, mental health and paediatrics.",
+    procedures:[]}
 ];
 
 /* Procedures - fees from the master procedures fee table (out-of-pocket, full fee) */
 const PROCEDURES = [
   {id:"implanon", name:"Implanon (contraceptive implant)", cat:"Women's health",
-    docs:["firth","mayadunne","sivanesan","saadatian","hashemi","patel"],
+    docs:["firth","sivanesan","saadatian","patel","zhang","tennakoon"],
     fees:[["Insertion","$47.73","$87.80"],["Reinsertion","$127.70","$228.25"],["Removal","$99.60","$154.20"]],
     journey:[["nurse","Prior consult","10-20 min","Discuss suitability and book your procedure. A prior consult is required before insertion."],["nurse","Nurse preparation","20 min","The nurse prepares you and the treatment room for the procedure."],["doctor","With your doctor","20 min","Your doctor inserts, reinserts or removes the implant."]],
     reasons:["A long-acting, reversible contraceptive that lasts up to 3 years","Removal or reinsertion available at any time","Performed on-site by experienced GPs, no referral needed"]},
   {id:"iud", name:"IUD / Mirena (insertion & removal)", cat:"Women's health",
-    docs:["mayadunne","hashemi","firth","patel","saadatian"],
+    docs:["firth","patel","saadatian"],
     fees:[["Insertion","$154.20","$348.20"],["Reinsertion","$212.70","$398.05"],["Removal","$80.00","$156.95"]],
     journey:[["nurse","Prior consult","20 min","A consult is required first to check suitability and prepare you."],["doctor","With your doctor & nurse","30-40 min","Your doctor performs the insertion with nurse assistance in the treatment room."]],
     reasons:["Long-acting contraception with hormonal (Mirena) and copper options","Can help manage heavy or painful periods","Inserted and removed on-site by our women's health GPs"]},
@@ -53,23 +94,23 @@ const PROCEDURES = [
     journey:[["doctor","With your doctor","20 min","Assessment, local anaesthetic and the procedure itself."],["nurse","Nurse dressing & aftercare","30 min","Dressing, wound-care instructions and a follow-up plan."]],
     reasons:["Lasting relief from painful, recurring ingrown toenails","Done under local anaesthetic in our treatment room","Wound care and review handled in the same visit"]},
   {id:"iron", name:"Iron infusion", cat:"Treatments",
-    docs:["firth","mayadunne","sivanesan"],
+    docs:["firth","sivanesan"],
     fees:[["Iron infusion","$150.00","$263.30"]],
     journey:[["doctor","Prior consult","10-20 min","A consult is required to confirm your iron levels and suitability."],["nurse","Nurse infusion","50 min","The infusion is given by our nurse, with your doctor overseeing."]],
     reasons:["Restores low iron faster than tablets when needed","Given safely on-site with nursing supervision","Useful when oral iron isn't tolerated or working"]},
   {id:"skin", name:"Skin cancer check", cat:"Skin",
-    docs:["firth","mayadunne","sivanesan","kamale","saadatian","hashemi"],
+    docs:["firth","sivanesan","kamale","saadatian"],
     fees:[["Spot check","$40.00","$79.75"],["Full body","$40.00","$116.95"]],
     bulkNote:"Bulk billing is not available for skin checks.",
     journey:[["doctor","With your doctor","10-20 min","A spot check (single lesion) or a full-body examination using dermoscopy."],["doctor","If needed","same or new visit","A biopsy or excision can be arranged if anything looks suspicious."]],
     reasons:["Early detection greatly improves skin cancer outcomes","Recommended for adults, especially those 40 and over","Biopsy and excision available on-site if follow-up is needed"]},
   {id:"biopsy", name:"Skin biopsy (punch / shave)", cat:"Skin",
-    docs:["firth","mayadunne","sivanesan","kamale","saadatian"],
+    docs:["firth","sivanesan","kamale","saadatian"],
     fees:[["All areas","$48.25","$95.20"]],
     journey:[["doctor","With your doctor","20 min","A small sample is taken under local anaesthetic and sent to pathology."],["nurse","Nurse dressing","20 min","Dressing and aftercare, with results discussed at follow-up."]],
     reasons:["Confirms a diagnosis before any larger treatment","Quick, done under local anaesthetic","Results reviewed and followed up by your GP"]},
   {id:"excision", name:"Skin lesion excision", cat:"Minor surgery",
-    docs:["firth","mayadunne","sivanesan","kamale","saadatian"],
+    docs:["firth","sivanesan","kamale","saadatian"],
     fees:[["Simple (<1cm)","$80.00","from $80.00"],["Intermediate (>1cm or 2 lesions)","$125.00","from $125.00"],["Complex (>1.5cm or 3+ lesions)","$150.00","$150.00 +"]],
     journey:[["doctor","Skin check / consult","10-20 min","The lesion is assessed and the excision is planned and booked."],["doctor","Excision with your doctor","by size","The lesion is removed under local anaesthetic, with sutures if needed."],["nurse","Nurse aftercare","follow-up","Dressing, suture removal and results review."]],
     reasons:["Removes suspicious or troublesome lesions completely","Sent to pathology for a definitive diagnosis","Concession pricing available; Medicare rebates apply"]},
@@ -79,7 +120,7 @@ const PROCEDURES = [
     journey:[["doctor","With your doctor","20-40 min","A GP-led acupuncture session as part of your care plan."]],
     reasons:["A GP-delivered option for pain and other conditions","Integrated with your general practice care","Flat, affordable out-of-pocket fee"]},
   {id:"minor", name:"Minor procedures (cryotherapy, dressings, ear syringing, ECG)", cat:"Minor procedures",
-    docs:["firth","mayadunne","sivanesan","saadatian","patel","kamale","hashemi","zhang","hodgson","lam","janakan","sayanan","yang","fam"],
+    docs:["firth","sivanesan","saadatian","patel","kamale","zhang","hodgson","lam","tennakoon"],
     fees:[["Simple","$40.00","$79.75"],["Intermediate","$50.00","$89.75"],["Complex","$60.00","$99.75"]],
     journey:[["nurse","With the nurse","10-20 min","Many minor procedures are done by our nurses in the treatment room."],["doctor","Doctor if required","as needed","Some procedures are performed or reviewed by your GP."]],
     reasons:["Common issues handled quickly, without a referral","Concession pricing available","Performed by most of our doctors and nurses"]}
@@ -161,16 +202,16 @@ function siteLabel(sites){ return sites.map(s => s + ' Whitehorse Rd').join(' & 
 function initials(name){ return name.replace('Dr ','').split(' ').map(w => w[0]).slice(0,2).join(''); }
 
 function journeyHTML(steps){
-  return `<div class="journey">${steps.map(s=>`<div class="jstep ${s[0]}"><div class="jwho">${s[0]==='nurse'?'<span aria-hidden="true">🩺</span> With the nurse':(s[0]==='doctor'?'<span aria-hidden="true">👨‍⚕️</span> With your doctor':(s[0]==='collector'?'<span aria-hidden="true">🧪</span> With the pathology collector':(s[0]==='employer'?'<span aria-hidden="true">💼</span> With your employer':s[1])))} <span class="jtime">${s[2]}</span></div><div class="jwhat"><strong>${s[1]}.</strong> ${s[3]}</div></div>`).join('')}</div>`;
+  return `<div class="journey">${steps.map(s=>`<div class="jstep ${s[0]}"><div class="jwho">${s[0]==='nurse'?'With the nurse':(s[0]==='doctor'?'With your doctor':(s[0]==='collector'?'With the pathology collector':(s[0]==='employer'?'With your employer':s[1])))} <span class="jtime">${s[2]}</span></div><div class="jwhat"><strong>${s[1]}.</strong> ${s[3]}</div></div>`).join('')}</div>`;
 }
 function reasonsHTML(list){
   return `<ul class="reasons">${list.map(r=>`<li><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>${r}</li>`).join('')}</ul>`;
 }
 function ctaHTML(showTele, teleOnly){
-  var tele = `<a class="btn btn-light-blue btn-lg" href="telehealth.html"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>${teleOnly?'Book a telehealth consult':'Telehealth instead'}</a>`;
+  var tele = `<a class="btn btn-outline" href="telehealth.html"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>${teleOnly?'Book a telehealth consult':'Telehealth instead'}</a>`;
   if(teleOnly) return `<div class="fc-modal-cta">${tele}</div>`;
   return `<div class="fc-modal-cta">
-    <a class="btn btn-green btn-lg" href="${BOOK_URL}"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Book this in person</a>
+    <a class="btn btn-primary" href="${BOOK_URL}"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Book this in person</a>
     ${showTele?tele:''}
   </div>`;
 }

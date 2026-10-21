@@ -1,0 +1,513 @@
+/* ============================================================
+   Balwyn Central Medical · Direction C "Considered"
+   Premium family practice: warm linen, navy, pink as a fine accent,
+   real photography, quiet layout. ICO Health Group design system.
+   ============================================================ */
+:root{
+  --navy:#293176; --navy-deep:#1C2154;
+  --pink:#E9476F; --pink-text:#C42E57; --pink-light:#F58BA5; /* tint of brand pink, for accents on navy */
+  --sky:#26ABE3;
+  --linen:#F7F3EE; --sand:#EEE7DE; --paper:#FFFFFF;
+  --ink:#2B2E45; --copy:#55575E; --muted:#6A6862;
+  --rule:rgba(41,49,118,.16);
+  --nav-h:84px;
+  --r:4px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--linen);color:var(--copy);font-family:"Istok Web",system-ui,sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:"Montserrat",system-ui,sans-serif;color:var(--navy);margin:0;font-weight:500;letter-spacing:-.02em;line-height:1.12;text-wrap:balance}
+h1{font-size:clamp(2.5rem,5.2vw,4.4rem);letter-spacing:-.035em;line-height:1.04}
+h2{font-size:clamp(1.9rem,3.4vw,2.9rem);letter-spacing:-.03em}
+h3{font-size:1.2rem;font-weight:600;letter-spacing:-.01em}
+p{margin:0;text-wrap:pretty}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+.wrap{width:min(1240px,calc(100% - 48px));margin:0 auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:1rem;top:-120px;z-index:1000;background:var(--navy);color:#fff;font-family:"Montserrat";font-weight:600;padding:.8rem 1.3rem;text-decoration:none}
+.skip-link:focus{top:0}
+:focus-visible{outline:2px solid var(--navy-deep);outline-offset:4px}
+.dark :focus-visible,footer.site :focus-visible{outline-color:#fff}
+[tabindex="-1"]:focus{outline:none}
+[id]{scroll-margin-top:calc(var(--nav-h) + 24px)}
+a,button{touch-action:manipulation}
+
+.eyebrow{display:inline-flex;align-items:center;gap:.7em;font-family:"Montserrat";font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--navy)}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pink)}
+.dark .eyebrow{color:#fff}
+
+/* buttons: navy = book (design system cta), outline = telehealth */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:.8em 1.7em;border-radius:999px;font-family:"Montserrat";font-weight:600;font-size:.98rem;letter-spacing:.005em;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .25s ease,color .25s ease,border-color .25s ease;white-space:nowrap}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy-deep)}
+.btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-light{background:#fff;color:var(--navy)}
+.btn-light:hover{background:var(--linen)}
+.btn-ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.btn-ghost-light:hover{background:#fff;color:var(--navy)}
+.arrow-link{display:inline-flex;align-items:center;gap:.6em;min-height:44px;font-family:"Montserrat";font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--pink);padding-bottom:2px;min-height:0;line-height:1.6}
+.arrow-link:hover{color:var(--pink-text)}
+.arrow-link span{transition:transform .25s ease}
+.arrow-link:hover span{transform:translateX(4px)}
+
+/* utility bar */
+.util{background:var(--navy-deep);color:#E6E7EF;font-family:"Montserrat";font-size:.82rem;font-weight:500}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px;flex-wrap:wrap}
+.util a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.util a:hover{text-decoration:underline}
+.util .sep{opacity:.4;margin:0 .7rem}
+.util .otm{color:#FE9A90}
+
+/* header */
+header.site{position:sticky;top:0;z-index:200;background:rgba(247,243,238,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:var(--nav-h)}
+.lockup{display:flex;align-items:center;gap:1rem;text-decoration:none;min-height:48px}
+.lockup .ico{height:40px;width:auto}
+.lockup .ico-symbol{display:none;height:40px;width:40px}
+.lockup .divider{width:1px;height:34px;background:var(--rule)}
+.lockup .practice{font-family:"Montserrat";font-weight:600;font-size:1rem;color:var(--navy);line-height:1.15;letter-spacing:-.01em}
+.nav-links{display:flex;gap:2rem;list-style:none;margin:0;padding:0;font-family:"Montserrat";font-weight:500;font-size:.95rem}
+.nav-links>li{position:relative}
+.nav-links>li>a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:var(--ink);background:linear-gradient(var(--pink),var(--pink)) left 78%/0 1px no-repeat;transition:background-size .3s ease}
+.nav-links>li>a:hover,.nav-links>li>a[aria-current="page"]{background-size:100% 1px}
+.drop{position:absolute;top:100%;left:-1.4rem;background:var(--paper);border:1px solid var(--rule);box-shadow:0 30px 60px -30px rgba(28,33,84,.35);padding:1.4rem;display:flex;gap:2rem;min-width:560px;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .2s,transform .2s,visibility .2s}
+.drop.small{min-width:240px;flex-direction:column;gap:0}
+.has-drop:hover .drop,.has-drop:focus-within .drop{opacity:1;visibility:visible;transform:none}
+.has-drop.drop-dismissed .drop{opacity:0;visibility:hidden}
+.drop-col{flex:1;display:flex;flex-direction:column}
+.drop-label{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:0 0 .7rem;border-bottom:1px solid var(--rule);margin-bottom:.5rem}
+.drop a{padding:.45rem 0;font-size:.95rem;text-decoration:none;color:var(--ink)}
+.drop a:hover{color:var(--pink-text)}
+.nav-cta{display:flex;gap:.7rem;align-items:center}
+.nav-cta .btn{min-height:46px;padding:.6em 1.4em;font-size:.92rem}
+.burger{display:none;width:48px;height:48px;border:1px solid var(--rule);border-radius:50%;background:transparent;cursor:pointer;align-items:center;justify-content:center;flex:none}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:1.5px;background:var(--navy);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+
+/* mobile menu */
+.mm-overlay{display:none;position:fixed;inset:0;background:rgba(28,33,84,.45);z-index:250}
+.mm-overlay.open{display:block}
+.mobile-menu{display:none;position:fixed;inset:0 0 0 auto;width:min(380px,90vw);background:var(--linen);z-index:300;padding:1.2rem 1.6rem 2rem;overflow-y:auto}
+.mobile-menu.open{display:block}
+.mm-close{float:right;width:48px;height:48px;border:1px solid var(--rule);background:transparent;border-radius:50%;font-size:1.5rem;color:var(--navy);cursor:pointer}
+.mobile-menu nav{clear:both;padding-top:1.2rem;display:flex;flex-direction:column}
+.mobile-menu nav>a,.mm-group>button{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:56px;font-family:"Montserrat";font-weight:500;font-size:1.15rem;color:var(--navy);text-decoration:none;background:none;border:0;border-bottom:1px solid var(--rule);text-align:left;cursor:pointer;padding:0}
+.mm-sub{display:none;flex-direction:column;padding:.4rem 0 .9rem}
+.mm-group.open .mm-sub{display:flex}
+.mm-sub a{padding:.55rem 0;text-decoration:none;color:var(--copy)}
+.mm-label{font-family:"Montserrat";font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.8rem}
+.mobile-menu .btn{width:100%;margin-top:1rem}
+.mobile-menu :focus-visible{outline-offset:2px}
+
+/* hero: split, photo bleeds to the right edge */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(760px,calc(100vh - 128px))}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(3rem,6vw,6rem) clamp(1.5rem,5vw,5rem) clamp(3rem,6vw,6rem) max(24px,calc((100vw - 1240px)/2))}
+.hero h1{margin:1.4rem 0 1.5rem;max-width:12ch}
+.hero .lede{font-size:1.2rem;max-width:40ch;color:var(--copy)}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin:2.2rem 0 2rem}
+.hero-note{display:flex;gap:.8rem;align-items:flex-start;padding-top:1.4rem;border-top:1px solid var(--rule);max-width:44ch;font-size:.98rem;color:var(--ink)}
+.hero-note b{font-family:"Montserrat";font-weight:600;color:var(--navy)}
+.hero-photo{position:relative;overflow:hidden;border-bottom-left-radius:180px}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:60% 30%}
+
+/* facts row */
+.facts{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--linen)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:2rem 1.5rem;border-left:1px solid var(--rule)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact .n{font-family:"Montserrat";font-size:2.2rem;font-weight:500;color:var(--navy);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.fact .l{margin-top:.5rem;font-size:.95rem;color:var(--copy)}
+
+/* sections */
+.section{padding:clamp(4.5rem,9vw,8rem) 0}
+.section.paper{background:var(--paper)}
+.section.sand{background:var(--sand)}
+.intro{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,6vw,6rem);align-items:start}
+.intro .statement{font-family:"Montserrat";font-weight:500;font-size:clamp(1.6rem,2.8vw,2.3rem);line-height:1.3;letter-spacing:-.02em;color:var(--navy)}
+.intro .statement em{font-style:normal;color:var(--pink-text)}
+.intro .body p+p{margin-top:1rem}
+.intro .body{max-width:56ch}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}
+.sec-head h2{margin-top:1rem;max-width:18ch}
+.sec-head p{max-width:46ch}
+
+/* care list: editorial rows */
+.care{display:grid;grid-template-columns:1fr 1fr;column-gap:4rem;border-top:1px solid var(--rule)}
+.care a{display:grid;grid-template-columns:3.2rem 1fr auto;gap:1rem;align-items:baseline;padding:1.6rem 0;border-bottom:1px solid var(--rule);text-decoration:none}
+.care .num{font-family:"Montserrat";font-size:.85rem;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.care h3{margin-bottom:.3rem}
+.care p{font-size:1rem}
+.care .go{font-family:"Montserrat";color:var(--navy);transition:transform .25s ease,color .25s ease}
+.care a:hover h3{color:var(--pink-text)}
+.care a:hover .go{transform:translateX(4px);color:var(--pink-text)}
+
+/* feature split */
+.feature{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2.5rem,6vw,6rem);align-items:center}
+.feature.rev{grid-template-columns:.9fr 1.1fr}
+.feature.rev .feature-media{order:2}
+.feature-media{position:relative}
+.feature-media img{width:100%;aspect-ratio:4/3.2;object-fit:cover;border-radius:var(--r)}
+.feature-media figcaption{margin-top:.9rem;font-size:.92rem;color:var(--muted)}
+.feature h2{margin:1rem 0 1.2rem}
+.ticklist{list-style:none;padding:0;margin:2rem 0 0;border-top:1px solid var(--rule)}
+.ticklist li{padding:1.1rem 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline}
+.ticklist b{font-family:"Montserrat";font-weight:600;color:var(--navy)}
+.ticklist span{color:var(--copy);font-size:.98rem;text-align:right}
+
+/* doctors */
+.portraits{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:3rem}
+.portraits img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r)}
+.doc-list{columns:3;column-gap:3rem;list-style:none;padding:0;margin:0;border-top:1px solid var(--rule)}
+.doc-list li{break-inside:avoid;border-bottom:1px solid var(--rule)}
+.doc-list a{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:56px;text-decoration:none;font-family:"Montserrat";font-weight:500;color:var(--ink)}
+.doc-list a small{font-family:"Istok Web";font-size:.85rem;color:var(--muted);font-weight:400;text-align:right}
+.doc-list a:hover{color:var(--pink-text)}
+
+/* fees: pricing-table feel */
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);background:var(--paper)}
+.price{padding:2.2rem 2rem;border-left:1px solid var(--rule)}
+.price:first-child{border-left:0}
+.price .day{font-family:"Montserrat";font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.price .amt{font-family:"Montserrat";font-weight:500;font-size:3.4rem;letter-spacing:-.04em;color:var(--navy);line-height:1;margin:1rem 0 .7rem;font-variant-numeric:tabular-nums}
+.price .who{font-size:.98rem}
+.price-notes{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+.price-notes p{padding-left:1.2rem;border-left:2px solid var(--pink);color:var(--ink)}
+.price-notes b{font-family:"Montserrat";font-weight:600;color:var(--navy)}
+
+/* dark band (telehealth) */
+.dark{background:var(--navy);color:#DADCEA}
+.dark h2{color:#fff}
+.tele{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,6rem);align-items:center}
+.tele img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 25%;border-radius:var(--r)}
+.tele h2{margin:1rem 0 1.2rem}
+.tele .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+.tele small{display:block;margin-top:1.4rem;font-size:.95rem;color:#C9CCE0}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.loc{background:var(--paper);padding:2.4rem;border:1px solid var(--rule)}
+.loc .status{font-family:"Montserrat";font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.loc h3{font-size:1.7rem;font-weight:500;letter-spacing:-.02em;margin:.7rem 0 .2rem}
+.hours{margin:1.6rem 0;display:grid}
+.hours div{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-top:1px solid var(--rule)}
+.hours dt{color:var(--copy)}
+.hours dd{margin:0;font-family:"Montserrat";font-weight:500;color:var(--ink)}
+.loc .phone{font-family:"Montserrat";font-weight:500;font-size:1.3rem;color:var(--navy);text-decoration:none;display:inline-flex;min-height:48px;align-items:center}
+.loc .phone:hover{color:var(--pink-text)}
+.after{margin-top:2rem;font-size:.98rem;color:var(--ink)}
+
+/* on the mend */
+.otm-line{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding:2.2rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);text-decoration:none}
+.otm-line b{display:block;font-family:"Montserrat";font-weight:500;font-size:1.4rem;color:var(--navy);letter-spacing:-.02em}
+.otm-line .badge{font-family:"Montserrat";font-weight:600;font-size:.85rem;background:#FE7B6E;color:#000829;padding:.7em 1.4em;border-radius:999px}
+.otm-line:hover b{color:var(--pink-text)}
+
+/* footer */
+footer.site{background:var(--navy-deep);color:#C9CCE0;padding:4.5rem 0 2.2rem}
+footer.site a{color:#fff;text-decoration:none}
+footer.site a:hover{text-decoration:underline;text-underline-offset:4px}
+.foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem}
+.foot .ico-white{width:190px;height:auto;margin-bottom:1.2rem}
+.foot h2{font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9EA3C4;margin-bottom:1.1rem}
+.foot nav a,.foot p{display:block;margin-bottom:.55rem;font-size:.98rem}
+.foot .practice{font-family:"Montserrat";font-weight:600;color:#fff;font-size:1.1rem;margin-bottom:.4rem}
+.ack{border-top:1px solid rgba(255,255,255,.16);margin-top:3rem;padding-top:1.6rem;font-size:.92rem;max-width:90ch}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:1.2rem;font-size:.88rem}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:1120px){
+  .nav-links{display:none}
+  .burger{display:flex}
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-photo{order:-1;height:56vw;max-height:460px;border-bottom-left-radius:0}
+  .hero-copy{padding:2.6rem 24px 3.4rem}
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .fact{border-top:1px solid var(--rule)}
+  .fact:nth-child(-n+2){border-top:0}
+  .intro,.feature,.feature.rev,.tele,.visit,.price-notes{grid-template-columns:1fr}
+  .feature.rev .feature-media{order:0}
+  .care{grid-template-columns:1fr}
+  .care a:first-child+a{border-top:0}
+  .doc-list{columns:2}
+  .pricing{grid-template-columns:1fr}
+  .price{border-left:0;border-top:1px solid var(--rule)}
+  .price:first-child{border-top:0}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .wrap{width:calc(100% - 32px)}
+  .hero-copy{padding:2.2rem 16px 3rem}
+  body{font-size:16px}
+  .util .hide-sm{display:none}
+  .lockup .ico,.lockup .divider{display:none}
+  .lockup .ico-symbol{display:block}
+  .nav-cta .btn-primary{padding:.5em 1.1em}
+  .nav{gap:.6rem}
+  .portraits{grid-template-columns:1fr 1fr}
+  .portraits img:last-child{display:none}
+  .doc-list{columns:1}
+  .ticklist li{grid-template-columns:1fr}
+  .ticklist span{text-align:left}
+  .foot{grid-template-columns:1fr}
+  .fact{padding:1.4rem 1rem}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+.nowrap{white-space:nowrap}
+.doc-list a small{white-space:nowrap}
+.dark .steps{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.2)}
+.dark .steps li{display:grid;grid-template-columns:3.4rem 1fr;gap:1rem;padding:1.6rem 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.dark .steps .n{font-family:"Montserrat";font-weight:500;font-size:1.4rem;color:var(--pink-light);font-variant-numeric:tabular-nums}
+.dark .steps b{display:block;font-family:"Montserrat";font-weight:600;color:#fff;font-size:1.1rem;margin-bottom:.2rem}
+.lockup .ico{height:46px}
+.arrow-link{position:relative}
+.arrow-link::after{content:"";position:absolute;left:0;right:0;top:-8px;bottom:-8px}
+@media(max-width:900px){.hero-photo{height:max(300px,62vw)}}
+.dark .eyebrow::before{background:var(--pink-light)}
+
+/* header wordmark only (ICO logo lives in the footer) */
+.lockup .practice{font-size:1.25rem;font-weight:600;letter-spacing:-.02em}
+@media(max-width:600px){.lockup .practice{font-size:1.05rem;max-width:9.5em;line-height:1.15}}
+@media(max-width:1000px){.util .hide-sm{display:none}}
+
+/* ============================================================
+   SHARED COMPONENTS FOR INNER PAGES
+   ============================================================ */
+
+/* interior page header */
+.page-head{padding:clamp(3rem,7vw,6rem) 0 clamp(2.5rem,5vw,4rem);border-bottom:1px solid var(--rule)}
+.page-head .crumbs{font-family:"Montserrat";font-size:.85rem;color:var(--muted);margin-bottom:1.6rem}
+.page-head .crumbs a{color:var(--muted);text-decoration:none;display:inline-block;padding:.6rem 0}
+.page-head .crumbs a:hover{color:var(--pink-text);text-decoration:underline}
+.page-head .crumbs .sep{margin:0 .5rem;opacity:.6}
+.page-head h1{margin:1.1rem 0 1.2rem;max-width:16ch}
+.page-head .lede{font-size:1.2rem;max-width:52ch}
+.page-head .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+.page-head.split .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,5rem);align-items:end}
+.page-head.split img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r)}
+
+/* readable text blocks */
+.prose{max-width:62ch}
+.prose p+p{margin-top:1rem}
+.prose h2{margin:0 0 1.2rem}
+.prose h3{margin:2rem 0 .6rem}
+.lead-statement{font-family:"Montserrat";font-weight:500;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.3;letter-spacing:-.02em;color:var(--navy);max-width:28ch}
+.two-col{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,6vw,6rem);align-items:start}
+
+/* quiet notice */
+.notice{background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--pink);padding:1.6rem 1.8rem}
+.notice h2,.notice h3{font-size:1.15rem;font-weight:600;letter-spacing:-.01em;margin-bottom:.5rem}
+
+/* placeholders for content still to come */
+.placeholder{background:#FFF6DC;border:1px dashed #B8902F;padding:.05em .4em;color:#5C4A16;font-size:.95em}
+
+/* simple card grid */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.cards.four{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--paper);border:1px solid var(--rule);padding:2rem;display:flex;flex-direction:column;gap:.6rem}
+.card .k{font-family:"Montserrat";font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.card h3{font-size:1.25rem}
+.card .arrow-link{margin-top:auto;align-self:flex-start}
+a.card{text-decoration:none;transition:border-color .25s ease}
+a.card:hover{border-color:var(--navy)}
+a.card:hover h3{color:var(--pink-text)}
+
+/* fee tables */
+.table-wrap{overflow-x:auto;border:1px solid var(--rule);background:var(--paper)}
+.ftable{width:100%;border-collapse:collapse;font-size:1rem}
+.ftable th{text-align:left;font-family:"Montserrat";font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:1rem 1.4rem;border-bottom:1px solid var(--rule);white-space:nowrap}
+.ftable td{padding:1rem 1.4rem;border-bottom:1px solid var(--rule);color:var(--ink)}
+.ftable tr:last-child td{border-bottom:0}
+.ftable td.amt{font-family:"Montserrat";font-weight:500;color:var(--navy);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* faq accordion (main.js toggles .open on .faq-item) */
+.faq{border-top:1px solid var(--rule);max-width:860px}
+.faq-item{border-bottom:1px solid var(--rule)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;min-height:64px;padding:1.1rem 0;background:none;border:0;text-align:left;cursor:pointer;font-family:"Montserrat";font-weight:500;font-size:1.12rem;color:var(--navy);letter-spacing:-.01em}
+.faq-q:hover{color:var(--pink-text)}
+.faq-q .plus{flex:none;width:18px;height:18px;position:relative}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;left:50%;top:50%;background:currentColor;transform:translate(-50%,-50%)}
+.faq-q .plus::before{width:18px;height:1.5px}
+.faq-q .plus::after{width:1.5px;height:18px;transition:transform .3s ease}
+.faq-item.open .plus::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-a{max-height:0;overflow:hidden;visibility:hidden;transition:max-height .35s ease,visibility .35s}
+.faq-item.open .faq-a{visibility:visible}
+.faq-a p{padding:0 0 1.4rem;max-width:68ch}
+.faq-q:focus-visible{outline-offset:-2px}
+
+/* forms */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem 1.4rem}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field.full{grid-column:1/-1}
+.field label{font-family:"Montserrat";font-size:.9rem;font-weight:600;color:var(--navy)}
+.field input,.field select,.field textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid rgba(41,49,118,.35);border-radius:var(--r);padding:.85rem 1rem;min-height:50px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy)}
+.form-note{font-size:.95rem;color:var(--muted);margin-top:1rem}
+.form-thanks{margin-top:1.2rem;padding:1rem 1.2rem;background:var(--paper);border-left:3px solid var(--pink);color:var(--ink);font-weight:700}
+
+/* doctor cards */
+.doc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+.doc-card{display:flex;flex-direction:column;text-decoration:none;background:var(--paper);border:1px solid var(--rule);transition:border-color .25s ease}
+.doc-card:hover{border-color:var(--navy)}
+.doc-card .ph{aspect-ratio:1/1;background:var(--sand);display:flex;align-items:center;justify-content:center;font-family:"Montserrat";font-weight:500;font-size:2.4rem;color:var(--navy);letter-spacing:-.02em;position:relative}
+.doc-card .ph small{position:absolute;bottom:.8rem;left:0;right:0;text-align:center;font-family:"Istok Web";font-size:.85rem;color:var(--muted);letter-spacing:0}
+.doc-card .info{padding:1.2rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.3rem}
+.doc-card h3{font-size:1.1rem}
+.doc-card:hover h3{color:var(--pink-text)}
+.doc-card .meta{font-size:.92rem;color:var(--muted)}
+.doc-card .interests{font-size:.95rem;color:var(--copy)}
+.tag-tele{align-self:flex-start;font-family:"Montserrat";font-size:.78rem;font-weight:600;color:var(--navy);border:1px solid var(--rule);border-radius:999px;padding:.25em .8em;margin-top:.3rem}
+
+/* service journeys (services page, rendered from data.js) */
+.svc-list{display:grid;gap:1.4rem}
+.svc-detail{background:var(--paper);border:1px solid var(--rule);padding:clamp(1.6rem,3vw,2.4rem)}
+.sd-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem 2rem;flex-wrap:wrap;padding-bottom:1.4rem;margin-bottom:1.6rem;border-bottom:1px solid var(--rule)}
+.sd-head .k{font-family:"Montserrat";font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.sd-head h3{font-size:1.45rem;font-weight:500;letter-spacing:-.02em;margin-top:.4rem}
+.sd-cta{display:flex;gap:.6rem;flex-wrap:wrap}
+.sd-cta .btn{min-height:46px;padding:.55em 1.3em;font-size:.92rem}
+.sd-blurb{max-width:72ch;margin-bottom:1.8rem}
+.sd-body{display:grid;grid-template-columns:1.1fr .9fr;gap:2.4rem}
+.sd-col h4{font-family:"Montserrat";font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem}
+.sd-note{margin-top:1.2rem;padding:1rem 1.2rem;background:var(--linen);border-left:3px solid var(--pink);font-size:.98rem;color:var(--ink)}
+
+/* journey stepper (data.js journeyHTML) */
+.journey{position:relative;padding-left:1.8rem;border-left:1px solid var(--rule);margin-left:.4rem}
+.jstep{position:relative;padding-bottom:1.3rem}
+.jstep:last-child{padding-bottom:0}
+.jstep::before{content:"";position:absolute;left:calc(-1.8rem - 5px);top:.45rem;width:9px;height:9px;border-radius:50%;background:var(--navy)}
+.jstep.nurse::before{background:var(--pink)}
+.jstep.collector::before,.jstep.employer::before{background:var(--sky)}
+.jwho{font-family:"Montserrat";font-weight:600;color:var(--navy);display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.jtime{font-family:"Istok Web";font-weight:400;font-size:.88rem;color:var(--muted)}
+.jwhat{font-size:.98rem;margin-top:.2rem}
+.jwhat strong{color:var(--ink)}
+
+/* reasons list (data.js reasonsHTML) */
+.reasons{list-style:none;padding:0;margin:0;border-top:1px solid var(--rule)}
+.reasons li{display:flex;gap:.8rem;align-items:flex-start;padding:.8rem 0;border-bottom:1px solid var(--rule);font-size:.98rem}
+.reasons svg{flex:none;color:var(--pink-text);margin-top:4px}
+
+/* find care tool */
+.fc-tools{position:sticky;top:var(--nav-h);z-index:50;background:rgba(247,243,238,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);padding:1.2rem 0}
+.fc-searchbar{display:flex;align-items:center;gap:.7rem;background:var(--paper);border:1px solid rgba(41,49,118,.35);border-radius:999px;padding:.35rem .4rem .35rem 1.2rem;max-width:680px;margin:0 auto}
+.fc-searchbar:focus-within{outline:2px solid var(--navy);outline-offset:1px}
+.fc-searchbar svg{flex:none;color:var(--navy)}
+.fc-searchbar input{flex:1;min-width:0;border:0;outline:none;background:transparent;font:inherit;font-size:1.05rem;color:var(--ink);min-height:46px}
+.fc-clear{display:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--linen);color:var(--navy);font-size:1.3rem;cursor:pointer}
+.fc-clear.show{display:block}
+.fc-tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+.fc-tab{min-height:44px;padding:0 1.2rem;border-radius:999px;border:1px solid var(--rule);background:transparent;font-family:"Montserrat";font-weight:500;font-size:.92rem;color:var(--ink);cursor:pointer}
+.fc-tab:hover{border-color:var(--navy)}
+.fc-tab.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.fc-count{text-align:center;color:var(--muted);margin:2rem 0 1.4rem}
+.fc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.fc-card{display:flex;flex-direction:column;gap:.5rem;text-align:left;background:var(--paper);border:1px solid var(--rule);padding:1.5rem;cursor:pointer;font:inherit;color:inherit;transition:border-color .25s ease}
+.fc-card:hover{border-color:var(--navy)}
+.fc-card:hover .fc-title{color:var(--pink-text)}
+.fc-kind{align-self:flex-start;font-family:"Montserrat";font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fc-cardhead{display:flex;align-items:center;gap:.8rem}
+.fc-avatar{width:46px;height:46px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;font-family:"Montserrat";font-weight:600;color:var(--navy);flex:none}
+.fc-title{font-family:"Montserrat";font-weight:600;font-size:1.1rem;color:var(--navy);line-height:1.25}
+.fc-meta{font-size:.94rem;color:var(--muted)}
+.fc-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.3rem}
+.chip{font-size:.85rem;border:1px solid var(--rule);border-radius:999px;padding:.2em .75em;color:var(--ink);background:var(--linen)}
+.chip.oop{border-color:var(--navy);color:var(--navy);background:transparent;font-family:"Montserrat";font-weight:600}
+.no-results{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--muted)}
+.fee-flag{background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--pink);padding:1.1rem 1.3rem;margin-bottom:1.8rem;color:var(--ink)}
+
+/* find care modal */
+.fc-modal{position:fixed;inset:0;z-index:400;display:none;align-items:flex-start;justify-content:center;padding:5vh 1rem;overflow-y:auto}
+.fc-modal.open{display:flex}
+.fc-backdrop{position:fixed;inset:0;background:rgba(28,33,84,.5)}
+.fc-panel{position:relative;background:var(--paper);max-width:760px;width:100%;box-shadow:0 40px 80px -40px rgba(28,33,84,.6)}
+.fc-phead{background:var(--navy);color:#DADCEA;padding:2rem 2.2rem;position:relative}
+.fc-phead .fc-kind{color:#C9CCE0}
+.fc-phead h2{color:#fff;font-size:1.8rem;margin:.5rem 0 .3rem;padding-right:3rem}
+.fc-pclose{position:absolute;top:1rem;right:1rem;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:1.4rem;cursor:pointer}
+.fc-pclose:focus-visible{outline-color:#fff}
+.fc-phead .tele-badge{display:inline-block;margin-left:.6rem;font-family:"Montserrat";font-size:.8rem;font-weight:600;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:.15em .7em;color:#fff}
+.fc-pbody{padding:2rem 2.2rem 2.2rem}
+.fc-block{margin-bottom:2rem}
+.fc-block:last-child{margin-bottom:0}
+.fc-block h4{font-family:"Montserrat";font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem}
+.fc-blurb{margin-bottom:1.8rem;max-width:68ch}
+.feemini{width:100%;border-collapse:collapse;border:1px solid var(--rule);font-size:.98rem}
+.feemini th{text-align:left;font-family:"Montserrat";font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.8rem 1rem;border-bottom:1px solid var(--rule)}
+.feemini td{padding:.8rem 1rem;border-bottom:1px solid var(--rule)}
+.feemini td.oop{font-family:"Montserrat";font-weight:600;color:var(--navy);white-space:nowrap}
+.fc-doclist{display:flex;flex-wrap:wrap;gap:.5rem}
+.fc-docpill{display:inline-flex;align-items:center;min-height:44px;padding:0 1rem;border:1px solid var(--rule);border-radius:999px;background:var(--linen);font-family:"Montserrat";font-weight:500;font-size:.92rem;color:var(--navy);cursor:pointer}
+button.fc-docpill:hover{border-color:var(--navy)}
+span.fc-docpill{cursor:default}
+.fc-modal-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem;padding-top:1.8rem;border-top:1px solid var(--rule)}
+
+/* fee-change popup (home page, once per session) */
+.policy-pop{position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;padding:1.2rem}
+.policy-pop.open{display:flex}
+.pp-backdrop{position:absolute;inset:0;background:rgba(28,33,84,.5)}
+.pp-card{position:relative;background:var(--paper);max-width:540px;width:100%;padding:2.4rem 2.4rem 2.2rem;border-top:3px solid var(--pink)}
+.pp-card h2{font-size:1.5rem;margin:.9rem 0 .9rem}
+.pp-close{position:absolute;top:.9rem;right:.9rem;width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:transparent;font-size:1.4rem;color:var(--navy);cursor:pointer}
+.pp-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
+
+/* contact map */
+.mapwrap{border:1px solid var(--rule);min-height:420px;height:100%}
+.mapwrap iframe{display:block;width:100%;height:100%;min-height:420px;border:0}
+
+@media(max-width:1000px){
+  .cards.four,.doc-grid{grid-template-columns:repeat(2,1fr)}
+  .fc-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .page-head.split .wrap,.two-col,.sd-body{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .cards.four,.doc-grid,.fc-grid,.form-grid{grid-template-columns:1fr}
+  .fc-phead,.fc-pbody{padding-left:1.4rem;padding-right:1.4rem}
+  .pp-card{padding:2.2rem 1.4rem 1.6rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+
+/* shared helpers added after page build */
+[hidden]{display:none!important}
+.actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+.fc-block h3{font-family:"Montserrat";font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem}
+.notice ul{margin:.6rem 0 0;padding-left:1.2rem}
+.notice ul li+li{margin-top:.4rem}
+.prose a,.notice a,.faq-a a{color:var(--navy);text-decoration:underline;text-decoration-color:var(--pink);text-underline-offset:3px}
+
+/* header circle mark (ICO symbol circles without the letters) */
+.lockup{gap:.8rem}
+.lockup .mark{width:40px;height:40px;flex:none}
+@media(max-width:600px){.lockup .mark{width:34px;height:34px}}
+
+.cards.two{grid-template-columns:repeat(2,1fr)}
+@media(max-width:900px){.cards.two{grid-template-columns:1fr}}
+.card .ticklist{margin-top:.6rem}
+
+/* doctor headshots (shared warm background, see images/doctors) */
+.doc-card .ph.photo{background:var(--sand);overflow:hidden}
+.doc-card .ph.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.fc-avatar{overflow:hidden}
+.fc-avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block}
+.fc-docphoto{float:right;width:150px;height:150px;object-fit:cover;object-position:50% 12%;border-radius:50%;margin:0 0 1rem 1.6rem;background:var(--sand)}
+@media(max-width:600px){.fc-docphoto{float:none;width:120px;height:120px;margin:0 0 1rem}}
+
+/* very small phones (320px) */
+@media(max-width:360px){.lockup{gap:.5rem}.lockup .mark{width:28px;height:28px}.lockup .practice{font-size:.92rem;max-width:8em}.nav-cta{gap:.35rem}.nav-cta .btn-primary{padding:.45em .85em;font-size:.85rem;min-height:44px}.burger{width:44px;height:44px}}
