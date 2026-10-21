@@ -41,7 +41,7 @@ const DOCTORS = [
     interests:["Children's health","Women's health","Sexual health","Implanon & contraception","Cervical screening"], languages:[],
     bio:"Dr Patel is a UK-trained GP with experience in community general practice, emergency and school settings. She holds postgraduate diplomas in child, women's, sexual and occupational health, and teaches University of Melbourne medical students at the clinic.",
     video:false, offers:["Cervical screening","Antenatal care","Yellow fever vaccine"],
-    procedures:["implanon","iud","minor"]},
+    procedures:["implanon","iud","minor"], otm:{slug:"making-the-most-of-your-gp-appointment", title:"Making the Most of Your GP Appointment"}},
   {id:"kamale", photo:"images/doctors/kamale.jpg", name:"Dr Avinash Kamale", role:"General practitioner", quals:"MBBS, DOMS, DPD (UK), FRACGP", sites:["427","411"], hours:"Weekdays at 411, weekends at 427", telehealth:true,
     interests:["Skin cancers & mole checks","Excisions & biopsies","Men's health","Travel medicine","General family health"], languages:["Hindi","Marathi"],
     bio:"Dr Kamale (Avi) is a Fellow of the RACGP with Victorian hospital experience in emergency, general medicine, surgery and orthopaedics. His interests include family health, travel medicine and skin, including skin cancer and mole checks, and he performs minor skin surgery on site.",

@@ -204,6 +204,27 @@ header.site{position:sticky;top:0;z-index:200;background:rgba(247,243,238,.94);b
 .otm-line b{display:block;font-family:"Montserrat";font-weight:500;font-size:1.4rem;color:var(--navy);letter-spacing:-.02em}
 .otm-line .badge{font-family:"Montserrat";font-weight:600;font-size:.85rem;background:#FE7B6E;color:#000829;padding:.7em 1.4em;border-radius:999px}
 .otm-line:hover b{color:var(--pink-text)}
+.otm-mini{display:inline-flex;align-items:center;gap:.9rem;margin:1.4rem 0 .8rem;padding:.3rem 0;text-decoration:none;color:var(--navy);line-height:1.35}
+.otm-mini .play{flex:none;width:2.4rem;height:2.4rem;border-radius:50%;background:#FE7B6E;position:relative}
+.otm-mini .play::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-35%,-50%);border-left:.62rem solid #000829;border-top:.4rem solid transparent;border-bottom:.4rem solid transparent}
+.otm-mini .t{display:block;font-weight:600;font-size:.98rem}
+.otm-mini .src{display:block;font-size:.86rem;color:var(--muted)}
+.otm-mini:hover .t{color:var(--pink-text)}
+.otm-eps{list-style:none;margin:0;padding:0}
+.otm-eps li{border-top:1px solid var(--rule)}
+.otm-eps li:last-child{border-bottom:1px solid var(--rule)}
+.otm-eps .otm-mini{display:flex;margin:0;padding:1rem 0}
+.otm-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.otm-card{display:flex;flex-direction:column;gap:.5rem;text-decoration:none;color:var(--navy)}
+.otm-card .thumb{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-radius:var(--r);margin-bottom:.6rem}
+.otm-card .thumb img{width:100%;height:100%;object-fit:cover}
+.otm-card .play{position:absolute;left:1rem;bottom:1rem;width:3rem;height:3rem;border-radius:50%;background:#FE7B6E}
+.otm-card .play::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-35%,-50%);border-left:.8rem solid #000829;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent}
+.otm-card .k{font-family:"Montserrat";font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.otm-card h3{font-size:1.15rem;line-height:1.3}
+.otm-card:hover h3{color:var(--pink-text)}
+.otm-card .who{font-size:.9rem;color:var(--copy)}
+@media(max-width:900px){.otm-cards{grid-template-columns:1fr}.otm-card:not(:first-child){display:none}}
 
 /* footer */
 footer.site{background:var(--navy-deep);color:#C9CCE0;padding:4.5rem 0 2.2rem}
