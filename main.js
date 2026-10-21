@@ -1,4 +1,4 @@
-/* Balwyn Central Medical — shared interactions */
+/* Balwyn Central Medical: shared interactions */
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
@@ -14,17 +14,59 @@
   onScroll();
   if(toTop) toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior: reduce ? 'auto':'smooth'}); });
 
+  /* ---- keep Tab inside an open dialog (menu, popup, Find care modal) ---- */
+  function trapTab(box, e){
+    if(e.key !== 'Tab') return;
+    var f = Array.prototype.filter.call(
+      box.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])'),
+      function(n){ return n.getClientRects().length > 0; });
+    if(!f.length) return;
+    var first = f[0], last = f[f.length-1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    else if(!box.contains(document.activeElement)){ e.preventDefault(); first.focus(); }
+  }
+  window.bcmTrapTab = trapTab;
+
   /* ---- mobile menu ---- */
   var burger = document.getElementById('burger');
   var menu = document.getElementById('mobileMenu');
   var overlay = document.getElementById('mmOverlay');
-  function closeMenu(){ if(menu) menu.classList.remove('open'); if(overlay) overlay.classList.remove('open'); document.body.style.overflow=''; }
-  if(burger) burger.addEventListener('click', function(){
+  var menuReturn = null;
+  function closeMenu(){
+    if(!menu || !menu.classList.contains('open')) return;
+    menu.classList.remove('open'); if(overlay) overlay.classList.remove('open'); document.body.style.overflow='';
+    if(burger) burger.setAttribute('aria-expanded','false');
+    if(menuReturn && menuReturn.focus) menuReturn.focus();
+  }
+  if(burger && menu) burger.addEventListener('click', function(){
+    menuReturn = document.activeElement;
     menu.classList.add('open'); if(overlay) overlay.classList.add('open'); document.body.style.overflow='hidden';
+    burger.setAttribute('aria-expanded','true');
+    var c = menu.querySelector('.mm-close'); if(c) c.focus();
   });
   document.querySelectorAll('.mm-close, #mmOverlay').forEach(function(el){ el.addEventListener('click', closeMenu); });
+  /* links to a section on the current page would otherwise leave the menu covering it */
+  if(menu) menu.querySelectorAll('a[href]').forEach(function(a){ a.addEventListener('click', function(){ menuReturn = null; closeMenu(); }); });
+  document.addEventListener('keydown', function(e){
+    if(!menu || !menu.classList.contains('open')) return;
+    if(e.key === 'Escape') closeMenu(); else trapTab(menu, e);
+  });
   document.querySelectorAll('.mm-group>button').forEach(function(b){
-    b.addEventListener('click', function(){ b.parentElement.classList.toggle('open'); });
+    b.addEventListener('click', function(){
+      var open = b.parentElement.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  /* ---- desktop dropdowns: open on focus (CSS), Escape closes ---- */
+  document.querySelectorAll('.has-drop').forEach(function(li){
+    var top = li.querySelector('a');
+    li.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){ li.classList.add('drop-dismissed'); if(top) top.focus(); }
+    });
+    li.addEventListener('focusout', function(e){ if(!li.contains(e.relatedTarget)) li.classList.remove('drop-dismissed'); });
+    li.addEventListener('mouseenter', function(){ li.classList.remove('drop-dismissed'); });
   });
 
   /* ---- reveal on scroll (exposed so pages can observe injected content) ---- */
@@ -75,30 +117,38 @@
   if(slider){
     var slides = slider.querySelectorAll('.tst-slide');
     var dotsWrap = slider.querySelector('.tst-dots');
-    var i = 0, timer;
+    var i = 0, timer, paused = false;
     slides.forEach(function(s, idx){
       var d = document.createElement('button');
+      d.type = 'button';
       d.setAttribute('aria-label','Testimonial '+(idx+1));
-      if(idx===0) d.classList.add('active');
+      if(idx===0){ d.classList.add('active'); d.setAttribute('aria-current','true'); }
       d.addEventListener('click', function(){ go(idx); reset(); });
       dotsWrap.appendChild(d);
     });
     var dots = dotsWrap.querySelectorAll('button');
     function go(n){
-      slides[i].classList.remove('active'); dots[i].classList.remove('active');
+      slides[i].classList.remove('active'); dots[i].classList.remove('active'); dots[i].removeAttribute('aria-current');
       i = (n + slides.length) % slides.length;
-      slides[i].classList.add('active'); dots[i].classList.add('active');
+      slides[i].classList.add('active'); dots[i].classList.add('active'); dots[i].setAttribute('aria-current','true');
     }
-    function reset(){ if(reduce) return; clearInterval(timer); timer = setInterval(function(){ go(i+1); }, 5500); }
+    function reset(){ if(reduce) return; clearInterval(timer); timer = setInterval(function(){ if(!paused) go(i+1); }, 5500); }
+    /* pause auto-advance while someone is reading or using the controls */
+    ['mouseenter','focusin'].forEach(function(ev){ slider.addEventListener(ev, function(){ paused = true; }); });
+    ['mouseleave','focusout'].forEach(function(ev){ slider.addEventListener(ev, function(){ paused = false; }); });
     reset();
   }
 
   /* ---- faq accordion ---- */
-  document.querySelectorAll('.faq-q').forEach(function(q){
+  document.querySelectorAll('.faq-q').forEach(function(q, idx){
+    var item = q.parentElement;
+    var a = item.querySelector('.faq-a');
+    if(!a.id) a.id = 'faq-a-' + (idx + 1);
+    q.setAttribute('aria-controls', a.id);
+    q.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
     q.addEventListener('click', function(){
-      var item = q.parentElement;
-      var a = item.querySelector('.faq-a');
       var open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
       a.style.maxHeight = open ? (a.scrollHeight + 20) + 'px' : null;
     });
   });

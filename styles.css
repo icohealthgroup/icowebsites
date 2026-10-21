@@ -322,7 +322,7 @@ footer{padding:4rem 0 2.2rem;background:var(--panel);border-top:1px solid var(--
 .socials{display:flex;gap:.6rem;margin-top:1.1rem}
 .socials a{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue)}
 .socials a:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
-.ack{font-size:.82rem;color:var(--muted);font-style:italic;border-top:1px solid var(--line);padding-top:1.4rem;margin-bottom:1.2rem;line-height:1.55}
+.ack{font-size:.82rem;color:var(--muted);font-style:normal;border-top:1px solid var(--line);padding-top:1.4rem;margin-bottom:1.2rem;line-height:1.55}
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.82rem;color:var(--muted)}
 
 /* reveal animation */
@@ -507,7 +507,7 @@ footer{padding:4rem 0 2.2rem;background:var(--panel);border-top:1px solid var(--
 /* --- doctor card placeholder flags --- */
 .doc .avatar{position:relative}
 .photo-flag{position:absolute;bottom:.6rem;left:50%;transform:translateX(-50%);font-family:"Montserrat";font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.85);border:1px dashed var(--blue-light);color:var(--blue);padding:.3em .8em;border-radius:100px;white-space:nowrap}
-.bio-flag{font-size:.72rem;color:var(--muted);font-style:italic;margin-top:.6rem;border-top:1px dashed var(--line);padding-top:.5rem}
+.bio-flag{font-size:.72rem;color:var(--muted);font-style:normal;margin-top:.6rem;border-top:1px dashed var(--line);padding-top:.5rem}
 
 /* --- reveal variants --- */
 .reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
@@ -647,3 +647,105 @@ h2{text-transform:none;letter-spacing:-.4px;font-weight:700;font-size:clamp(1.7r
 .pp-close:hover{background:var(--panel-2)}
 .pp-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem}
 @media(prefers-reduced-motion:reduce){.pp-card{animation:none}}
+
+/* ============================================================
+   V4 LAYER · accessibility and brand fixes (Oct 2026 audit)
+   Same look; only contrast, focus, keyboard and motion changes.
+   ============================================================ */
+:root{
+  --blue-light-text:#1878A8;   /* light blue for text on white/pale panels (4.9:1) */
+  --muted:#6B7080;             /* was #8A8F9A (3.2:1); now 4.9:1 on white */
+}
+
+/* skip link + screen-reader-only text */
+.skip-link{position:absolute;left:1rem;top:-120px;z-index:1000;background:var(--blue);color:#fff;font-family:"Montserrat";font-weight:600;padding:.8rem 1.3rem;border-radius:0 0 12px 12px}
+.skip-link:focus{top:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[tabindex="-1"]:focus{outline:none}
+
+/* visible keyboard focus everywhere */
+:focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px}
+.page-hero :focus-visible,.cta-band :focus-visible,.tele-cta :focus-visible,.fc-phead :focus-visible{outline-color:#fff}
+.faq-q:focus-visible,.mobile-menu :focus-visible,.drop :focus-visible{outline-offset:-3px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(38,171,227,.45)}
+.fc-searchbar:focus-within,.quick-search form:focus-within{border-color:var(--blue);box-shadow:0 0 0 4px rgba(38,171,227,.35)}
+
+/* contrast: light blue as text only in its darker text shade */
+.accent,.eyebrow,.drop-label,.mm-label,.svc .more,.doc .info .role,.fc-block h4,.sd-col h4,.tele-badge,.pp-tag,
+.hero-float-card .tag,.mini-stats .n,.nav-links a:hover,.nav-links a.active,.btn-ghost:hover,.fc-tab:hover:not(.active),
+.qs-chips button:hover,.fc-docpill:hover,.foot-grid a:hover{color:var(--blue-light-text)}
+.page-hero .eyebrow{color:#EAF4FB}
+.eyebrow::before{background:var(--blue-light)}
+.btn-light-blue,.pill.blue,.fc-kind.procedure{color:var(--blue-deep)}
+.btn-light-blue svg{color:var(--blue-deep)}
+
+/* keyboard access to the About and Services dropdowns */
+.has-drop:focus-within .drop{opacity:1;visibility:visible;transform:translateY(0)}
+.has-drop:focus-within>a::after{transform:rotate(225deg);margin-top:2px}
+.has-drop.drop-dismissed .drop{opacity:0;visibility:hidden}
+
+/* anchors land below the sticky header */
+[id]{scroll-margin-top:calc(var(--nav-h) + 20px)}
+
+/* no italics anywhere */
+.ack,.bio-flag{font-style:normal}
+
+/* collapsed FAQ answers leave the tab order */
+.faq-a{visibility:hidden;transition:max-height .35s ease,visibility .35s}
+.faq-item.open .faq-a{visibility:visible}
+
+/* explicit transitions instead of "all" */
+.drop{transition:opacity .22s ease,transform .22s ease,visibility .22s}
+.to-top{transition:opacity .3s,transform .3s,visibility .3s}
+.svc .ico{transition:background .3s,color .3s,transform .3s}
+.tst-slide{transition:opacity .6s ease,transform .6s ease}
+.tst-dots button{transition:background .2s,width .2s}
+.logo-chip{transition:border-color .25s,transform .25s,box-shadow .25s}
+.fc-tab{transition:border-color .2s,color .2s,background .2s}
+.fc-docpill{transition:border-color .2s,color .2s}
+.qs-chips button{transition:border-color .2s,color .2s,transform .2s}
+
+/* touch: no double-tap delay; bigger hit areas without changing the look */
+a,button{touch-action:manipulation}
+.pp-close,.fc-pclose,.socials a{width:44px;height:44px}
+.fc-clear{width:44px;height:44px}
+.mobile-menu .mm-close{width:44px;height:44px}
+.qs-chips button,.fc-tab,button.fc-docpill{position:relative}
+.qs-chips button::after,.fc-tab::after,button.fc-docpill::after{content:"";position:absolute;left:0;right:0;top:-6px;bottom:-6px}
+
+/* find care cards: buttons hold spans, styled as before */
+.fc-card .fc-title{font-family:"Montserrat";font-size:1.08rem;font-weight:600;color:var(--blue);line-height:1.06}
+
+/* telehealth hero stacks on small screens */
+.tele-hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:2.5rem;align-items:center}
+@media(max-width:980px){.tele-hero-grid{grid-template-columns:1fr}.tele-hero-grid .hero-visual{margin:0 auto}}
+
+/* fees page: consult cards and info panels */
+.fee-effective{font-family:"Montserrat";font-weight:600;color:var(--blue);margin:0 0 1.2rem}
+.fee-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-bottom:1.1rem}
+.fee-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.6rem;border-top:4px solid var(--blue-light)}
+.fee-card .fee-day{font-family:"Montserrat";font-weight:700;color:var(--blue);font-size:1.05rem}
+.fee-card .fee-amt{font-family:"Montserrat";font-weight:800;color:var(--blue);font-size:2.6rem;line-height:1;margin:.7rem 0 .5rem;font-variant-numeric:tabular-nums}
+.fee-card .fee-who{font-size:1rem;color:var(--copy)}
+.fee-info{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.fee-info .notice p{font-size:1rem}
+.placeholder{background:#fff8e8;border:1px dashed #b8902f;border-radius:6px;padding:.05em .4em;color:#6b5a2a}
+@media(max-width:700px){.fee-cards,.fee-info{grid-template-columns:1fr}}
+
+/* reduced motion: stop every animation, including the modal pop */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+
+/* small phones: header buttons overflowed and pushed the menu button off-screen.
+   Telehealth becomes an icon-only circle (name kept for screen readers). */
+.burger{flex:none}
+@media(max-width:560px){
+  .nav-cta{gap:.5rem}
+  .nav-cta .btn-light-blue{width:44px;height:44px;padding:0;justify-content:center;font-size:0;gap:0;flex:none}
+  .nav-cta .btn-light-blue svg{width:18px;height:18px}
+}
+/* single-column layouts: photo frames collapsed to zero width on tablets and phones */
+@media(max-width:980px){.hero-visual,.split-media{width:100%}}
+.nav-cta .btn{white-space:nowrap;flex:none}
+.mobile-menu :focus-visible{outline-offset:2px}

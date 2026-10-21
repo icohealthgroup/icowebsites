@@ -87,54 +87,54 @@ const PROCEDURES = [
 
 /* Services - patient journeys and reasons to consider */
 const SERVICES = [
-  {id:"health-assessment", name:"Health Assessments (40-44, 45-49 & 75+)", cat:"Prevention", icon:"clipboard",
+  {id:"health-assessment", name:"Health assessments (40-44, 45-49 & 75+)", cat:"Prevention", icon:"clipboard",
     blurb:"Routine preventative health checks help you stay on top of your health and identify which risk factors need monitoring. Three assessments are offered: for 75 years and over, for 45 to 49 year olds, and for 40 to 44 year olds whose AUSDRISK diabetes risk score or certain chronic conditions make them eligible.",
     journey:[["nurse","Assessment with the nurse","40-60 min","The nurse completes your assessment, measurements, history and screening. Allow 50 to 60 minutes for a 75+ assessment, or 40 to 50 minutes for the 45 to 49 assessment."],["doctor","Review with your doctor","20 min","Your doctor reviews the assessment and sets a personalised prevention plan."]],
     reasons:["Picks up risks early, before they become problems","Often bulk billed when you're eligible","A tailored plan made with a doctor who knows your history"],
     note:"Eligibility for the 40 to 44 assessment depends on your AUSDRISK score and certain chronic conditions; ask your doctor or our nurses. We also offer the 4-year-old Healthy Kids Check."},
-  {id:"chronic", name:"Chronic Disease Management & Care Plans", cat:"Ongoing care", icon:"pulse",
+  {id:"chronic", name:"Chronic disease management & care plans", cat:"Ongoing care", icon:"pulse",
     blurb:"Living with a chronic disease or medical condition can be frustrating and tiring. Your doctor can help manage your condition and offer support and guidance, with a wide range of allied health professionals available on the premises and through doctor networks for further expertise.",
     journey:[["doctor","Care plan with your GP","20 min","Your doctor reviews your condition and prepares your GP Management Plan."],["nurse","Care coordination with the nurse","20 min","Straight after the doctor, the nurse completes the plan and coordinates any allied health referrals."],["doctor","Regular reviews","every 3 to 6 months","Your plan is reviewed and adjusted, usually every three months and at least every six."]],
     reasons:["Structured support for conditions like diabetes, heart and lung disease","Access to subsidised allied health through care plans","Coordinated between your GP, nurse and allied health team"]},
-  {id:"mental-health", name:"Mental Health Care", cat:"Wellbeing", icon:"mind",
+  {id:"mental-health", name:"Mental health care", cat:"Wellbeing", icon:"mind",
     blurb:"Mental health is just as important as physical health. Our empathetic practitioners support you no matter what you're going through. If you aren't feeling like yourself, are navigating a difficult time, or simply want someone to talk to, reach out to your doctor.",
     journey:[["doctor","Face-to-face consult","20+ min","A longer, private consult to talk through what's going on."],["doctor","Mental Health Care Plan","same visit","Your GP prepares a plan and referral where appropriate."],["doctor","Review & follow-up","scheduled","Ongoing review and coordination with psychology partners."]],
     reasons:["Compassionate, judgement-free support from your GP","Care plans can subsidise sessions with a psychologist","Continuity with a doctor who knows your history"],
     note:"Mental health care plans are provided face-to-face."},
-  {id:"womens", name:"Women's Health & Cervical Screening", cat:"Women's health", icon:"female",
+  {id:"womens", name:"Women's health & cervical screening", cat:"Women's health", icon:"female",
     blurb:"Our doctors are sensitive to the unique health needs of women across the lifespan, assisting with period symptoms, cervical screening, contraception guidance and breast examinations. Comprehensive menopause care is also available, covering symptoms, bone density, heart health, weight and mental health, from practitioners with specialised skills in menopause management.",
     journey:[["doctor","Book a longer consult","20 min","A dedicated appointment for screening or women's health concerns."],["doctor","Screening with your doctor","same visit","Cervical screening and other checks completed in private."]],
     reasons:["Cervical screening is your best protection against cervical cancer","Female and male GPs available for your comfort","Family planning, contraception and antenatal care all on-site"]},
-  {id:"mens", name:"Men's Health", cat:"Men's health", icon:"male",
+  {id:"mens", name:"Men's health", cat:"Men's health", icon:"male",
     blurb:"Your GP can assist with prostate checks, cancer screening and mental health, and support the management of heart disease, high cholesterol and diabetes, all handled sensitively.",
     journey:[["doctor","Book a consult","standard","A check focused on the conditions that matter most for men."],["doctor","Assessment & plan","same visit","Blood pressure, heart, prostate and mental health as needed."]],
     reasons:["Early detection of heart disease, diabetes and cancers","Prostate and men's health matters handled sensitively","Straightforward path from check to plan"]},
-  {id:"child", name:"Child Health & Immunisations", cat:"Family", icon:"family",
+  {id:"child", name:"Child health & immunisations", cat:"Family", icon:"family",
     blurb:"Children's health services are provided from birth. Regular health checks help you navigate growth, dietary changes, cognitive development and recommended immunisations.",
     journey:[["nurse","Nurse or doctor visit","standard","Childhood immunisations and health checks for little ones."],["doctor","Doctor review","as needed","Guidance and support from newborn through to starting school."]],
     reasons:["Keeps your child's immunisations on track","Free vaccines under the National Immunisation Program","Support for development, growth and family wellbeing"]},
-  {id:"antenatal", name:"Antenatal & Shared Care", cat:"Women's health", icon:"female",
+  {id:"antenatal", name:"Antenatal & shared care", cat:"Women's health", icon:"female",
     blurb:"During pregnancy, shared antenatal care lets your care be shared between your regular GP and your obstetrician. Planning a pregnancy? Preconception counselling, ideally started 3 to 6 months before trying, and family planning support are available too.",
     journey:[["doctor","Initial pregnancy consult","20 min","Discuss your pregnancy and plan your shared-care schedule."],["doctor","Shared care with your GP","through pregnancy","Most monitoring is done here, with a few hospital visits."],["doctor","6-week check","40 min + 20 min","A combined check for mother and baby with the doctor, then the nurse."]],
     reasons:["See your own GP for most of your pregnancy care","Fewer hospital trips through shared-care arrangements","Continuity of care before and after your baby arrives"]},
-  {id:"postnatal", name:"Postnatal Check (mother & baby)", cat:"Women's health", icon:"female",
+  {id:"postnatal", name:"Postnatal check (mother & baby)", cat:"Women's health", icon:"female",
     blurb:"After your baby arrives, a postnatal check looks after you both. The doctor examines your baby first, then checks on you, and the nurse follows up with immunisations, feeding and wellbeing support.",
     journey:[["doctor","Baby's check with the doctor","20 min","Your doctor examines your baby: growth, feeding, development and any concerns."],["doctor","Mother's check with the doctor","10 min","A check on your own recovery, mood and wellbeing."],["nurse","With the nurse","20 min","Immunisations, measurements and practical feeding and settling support."]],
     reasons:["One appointment covers both mother and baby","Immunisations kept on track from the start","A team that supports your recovery, not just the baby's progress"]},
-  {id:"immunisation", name:"Immunisations & Travel Vaccines", cat:"Prevention", icon:"clipboard",
+  {id:"immunisation", name:"Immunisations & travel vaccines", cat:"Prevention", icon:"clipboard",
     blurb:"Timely vaccinations strengthen your immune system, with child and adult immunisation programs protecting the whole family. Travelling overseas? Our doctors provide up-to-date travel medicine advice, vaccinations and any medicines you need for the journey.",
     journey:[["doctor","Pre-travel consult with your doctor","first visit","Book the doctor first. Travel advice works as a pre-consultation: your doctor plans which vaccines you need for your destination."],["nurse","Vaccinations with the nurse","follow-up","The nurse gives your vaccines. Some travel vaccines are not kept in stock and need to be ordered, so you may be rebooked once they arrive."]],
     reasons:["Free seasonal flu vaccine for eligible high-risk patients","Childhood vaccines bulk billed under the national program","Travel health advice for wherever you're headed"],
     note:"Routine and childhood immunisations can be booked directly with the nurse. For travel, always see the doctor first."},
-  {id:"occupational", name:"Occupational Health & WorkCover", cat:"Work health", icon:"clipboard",
+  {id:"occupational", name:"Occupational health & WorkCover", cat:"Work health", icon:"clipboard",
     blurb:"Our doctors provide quality occupational healthcare: pre-employment medicals, drug and alcohol screening, and care for workplace injuries, including treatment and support returning to work.",
     journey:[["doctor","Book with a doctor","standard","For a workplace injury, pre-employment medical or return-to-work matter, start with a doctor's appointment."],["doctor","Certificate of capacity","same visit","For WorkCover claims, your doctor assesses you and issues a certificate of capacity."],["employer","Lodge with your employer","next step","Give the certificate to your employer and obtain your WorkCover claim number so ongoing treatment can be billed to the claim."]],
     reasons:["Injury treatment and recovery managed by one doctor","Certificates and paperwork handled properly the first time","Support all the way back to work"]},
-  {id:"telehealth", name:"Telehealth Consultation", cat:"Access", icon:"video", telehealth:true, teleOnly:true,
+  {id:"telehealth", name:"Telehealth consultation", cat:"Access", icon:"video", telehealth:true, teleOnly:true,
     blurb:"Telehealth keeps quality care within reach when you can't come in. Consultations are available to patients who have seen a doctor face to face within the last 12 months. Please be reachable by phone from 5 minutes before your appointment time.",
     journey:[["doctor","Book a telehealth slot","online","Choose a phone or video appointment that suits you."],["doctor","Consult from home","standard","Speak with your GP for scripts, referrals, results and follow-ups."]],
     reasons:["See your doctor without leaving home","Ideal for scripts, referrals and results","Billed in line with our standard fee schedule"]},
-  {id:"pathology", name:"On-site Pathology (Dorevitch)", cat:"Access", icon:"lab",
+  {id:"pathology", name:"On-site pathology (Dorevitch)", cat:"Access", icon:"lab",
     blurb:"Dorevitch Pathology provides collection on-site with no appointment required. At Balwyn, collection is open Monday to Friday, 8:30am to 12:00pm.",
     journey:[["doctor","Request from your GP","same visit","Your doctor orders the tests you need."],["collector","Dorevitch collection","walk in","Dorevitch's own pathology collectors take your samples; our doctors and nurses aren't involved in collection. Monday to Friday, 8:30am to 12:00pm."]],
     reasons:["Bloods and samples collected without a second trip","Results returned to your GP for review","One building for your appointment and your tests"]}
@@ -161,16 +161,16 @@ function siteLabel(sites){ return sites.map(s => s + ' Whitehorse Rd').join(' & 
 function initials(name){ return name.replace('Dr ','').split(' ').map(w => w[0]).slice(0,2).join(''); }
 
 function journeyHTML(steps){
-  return `<div class="journey">${steps.map(s=>`<div class="jstep ${s[0]}"><div class="jwho">${s[0]==='nurse'?'🩺 With the nurse':(s[0]==='doctor'?'👨‍⚕️ With your doctor':(s[0]==='collector'?'🧪 With the pathology collector':(s[0]==='employer'?'💼 With your employer':s[1])))} <span class="jtime">${s[2]}</span></div><div class="jwhat"><strong>${s[1]}.</strong> ${s[3]}</div></div>`).join('')}</div>`;
+  return `<div class="journey">${steps.map(s=>`<div class="jstep ${s[0]}"><div class="jwho">${s[0]==='nurse'?'<span aria-hidden="true">🩺</span> With the nurse':(s[0]==='doctor'?'<span aria-hidden="true">👨‍⚕️</span> With your doctor':(s[0]==='collector'?'<span aria-hidden="true">🧪</span> With the pathology collector':(s[0]==='employer'?'<span aria-hidden="true">💼</span> With your employer':s[1])))} <span class="jtime">${s[2]}</span></div><div class="jwhat"><strong>${s[1]}.</strong> ${s[3]}</div></div>`).join('')}</div>`;
 }
 function reasonsHTML(list){
-  return `<ul class="reasons">${list.map(r=>`<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>${r}</li>`).join('')}</ul>`;
+  return `<ul class="reasons">${list.map(r=>`<li><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>${r}</li>`).join('')}</ul>`;
 }
 function ctaHTML(showTele, teleOnly){
-  var tele = `<a class="btn btn-light-blue btn-lg" href="telehealth.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>${teleOnly?'Book a telehealth consult':'Telehealth instead'}</a>`;
+  var tele = `<a class="btn btn-light-blue btn-lg" href="telehealth.html"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>${teleOnly?'Book a telehealth consult':'Telehealth instead'}</a>`;
   if(teleOnly) return `<div class="fc-modal-cta">${tele}</div>`;
   return `<div class="fc-modal-cta">
-    <a class="btn btn-green btn-lg" href="${BOOK_URL}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Book this in person</a>
+    <a class="btn btn-green btn-lg" href="${BOOK_URL}"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Book this in person</a>
     ${showTele?tele:''}
   </div>`;
 }
