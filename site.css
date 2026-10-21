@@ -602,3 +602,10 @@ input,select,textarea{font-size:max(16px,1rem)}
 @media(max-width:800px){.post-list{grid-template-columns:1fr}}
 footer.site .foot-bottom a{color:#fff}
 .allied-fee{font-size:.98rem;color:var(--ink);background:var(--linen);padding:.8rem 1rem}
+
+/* home intro: photo under the "Our practice" label fills the left column */
+.intro{align-items:center}
+.intro-media figure{margin:1.4rem 0 0}
+.intro-media img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 30%;border-radius:var(--r)}
+.intro-media figcaption{margin-top:.8rem;font-size:.92rem;color:var(--muted)}
+@media(max-width:900px){.intro{align-items:start}}
