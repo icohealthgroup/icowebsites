@@ -94,35 +94,38 @@ const PROCEDURES = [
   {id:"implanon", name:"Implanon (contraceptive implant)", cat:"Women's health", limits:{patel:"removal only"},
     docs:["firth","sivanesan","saadatian","patel","alfayadh","vlam","tennakoon","zhang"],
     fees:[["Insertion","$47.73","$87.80"],["Reinsertion","$127.70","$228.25"],["Removal","$99.60","$154.20"]],
-    journey:[["nurse","Prior consult","10-20 min","Discuss suitability and book your procedure. A prior consult is required before insertion."],["nurse","Nurse preparation","20 min","The nurse prepares you and the treatment room for the procedure."],["doctor","With your doctor","20 min","Your doctor inserts, reinserts or removes the implant."]],
+    journey:[["doctor","Prior consult","10-20 min","Discuss suitability and book your procedure. A prior consult is required before insertion."],["nurse","Nurse preparation","20 min","The nurse prepares you and the treatment room for the procedure."],["doctor","Procedure","20 min","Your doctor inserts, reinserts or removes the implant."]],
+    visitNote:"The prior consult is a separate appointment before your procedure. On the day, your doctor and the nurse do the procedure together, so these times run at the same time rather than one after the other. The nurse may call you in a little earlier to get you ready, depending on how the day is running.",
     reasons:["A long-acting, reversible contraceptive that lasts up to 3 years","Removal or reinsertion available at any time","Performed on-site by experienced GPs, no referral needed"]},
   {id:"iud", name:"IUD / Mirena (insertion & removal)", cat:"Women's health",
     limits:{firth:"removal only", saadatian:"removal only", patel:"removal only", alfayadh:"removal only"},
     docs:["tennakoon","firth","saadatian","patel","alfayadh"],
     fees:[["Insertion","$154.20","$348.20"],["Reinsertion","$212.70","$398.05"],["Removal","$80.00","$156.95"]],
     specialistNote:"Our visiting obstetrician and gynaecologist, Dr Samina Kausar, also inserts IUDs as a day procedure here at the clinic, with a GP referral. Dr Kausar sets her own fees: on top of the consultation fee, a treatment room fee may also apply.",
-    journey:[["doctor","Prior consult","20 min","A consult is needed first to check suitability and prepare you."],["doctor","With your doctor and nurse","30-40 min","Your doctor inserts or removes the IUD in the treatment room, with nurse assistance."]],
+    journey:[["doctor","Prior consult","20 min","A consult is needed first to check suitability and prepare you."],["doctor","Procedure with your doctor and nurse","30-40 min","Your doctor inserts or removes the IUD in the treatment room, with nurse assistance."]],
     reasons:["Long-acting contraception with hormonal (Mirena) and copper options","Inserted and removed here at the clinic","Your GP can talk through your contraception options"]},
   {id:"toenail", name:"Ingrown toenail surgery", cat:"Minor surgery",
     docs:["sivanesan","saadatian","kamale"],
     fees:[["Toenail removal","$128.98","$219.45"],["Partial resection","$133.50","$249.75"],["Wedge resection","$146.85","$338.90"]],
-    journey:[["doctor","With your doctor","20 min","Assessment, local anaesthetic and the procedure itself."],["nurse","Nurse dressing & aftercare","30 min","Dressing, wound-care instructions and a follow-up plan."]],
+    journey:[["doctor","Procedure","20 min","Assessment, local anaesthetic and the procedure itself."],["nurse","Nurse dressing & aftercare","30 min","Dressing, wound-care instructions and a follow-up plan."]],
+    visitNote:"Your doctor and the nurse do the procedure together, so these times run at the same time rather than one after the other. The nurse may call you in a little earlier to get you ready, depending on how the day is running.",
     reasons:["Lasting relief from painful, recurring ingrown toenails","Done under local anaesthetic in our treatment room","Wound care and review handled in the same visit"]},
   {id:"iron", name:"Iron infusion", cat:"Treatments",
     docs:["firth","sivanesan","saadatian","alfayadh","vlam","burdick"],
     fees:[["Iron infusion","$150.00","$263.30"]],
     journey:[["doctor","Prior consult","10-20 min","A consult is required to confirm your iron levels and suitability."],["nurse","Nurse infusion","50 min","The infusion is given by our nurse, with your doctor overseeing."]],
     reasons:["Restores low iron faster than tablets when needed","Given safely on-site with nursing supervision","Useful when oral iron isn't tolerated or working"]},
-  {id:"skin", name:"Skin cancer check", cat:"Skin",
+  {id:"skin", name:"Skin cancer check", cat:"Skin", keywords:"skin check spot check full body mole moles melanoma dermoscopy",
     docs:["firth","sivanesan","saadatian","kamale"],
     fees:[["Spot check","$40.00","$79.75"],["Full body","$40.00","$116.95"]],
     bulkNote:"Bulk billing is not available for skin checks.",
-    journey:[["doctor","With your doctor","10-20 min","A spot check (single lesion) or a full-body examination using dermoscopy."],["doctor","If needed","same or new visit","A biopsy or excision can be arranged if anything looks suspicious."]],
+    journey:[["doctor","Skin check","10-20 min","A spot check (single lesion) or a full-body examination using dermoscopy."],["doctor","If needed","same or new visit","A biopsy or excision can be arranged if anything looks suspicious."]],
     reasons:["Early detection greatly improves skin cancer outcomes","Recommended for adults, especially those 40 and over","Biopsy and excision available on-site if follow-up is needed"]},
   {id:"biopsy", name:"Skin biopsy (punch / shave)", cat:"Skin",
     docs:["firth","sivanesan","saadatian","kamale","alfayadh"],
     fees:[["All areas","$48.25","$95.20"]],
-    journey:[["doctor","With your doctor","20 min","A small sample is taken under local anaesthetic and sent to pathology."],["nurse","Nurse dressing","20 min","Dressing and aftercare, with results discussed at follow-up."]],
+    journey:[["doctor","Biopsy","20 min","A small sample is taken under local anaesthetic and sent to pathology."],["nurse","Nurse dressing","20 min","Dressing and aftercare, with results discussed at follow-up."]],
+    visitNote:"Your doctor and the nurse do the procedure together, so these times run at the same time rather than one after the other. The nurse may call you in a little earlier to get you ready, depending on how the day is running.",
     reasons:["Confirms a diagnosis before any larger treatment","Quick, done under local anaesthetic","Results reviewed and followed up by your GP"]},
   {id:"excision", name:"Skin lesion excision", cat:"Minor surgery",
     docs:["firth","sivanesan","saadatian","kamale"],
@@ -132,12 +135,12 @@ const PROCEDURES = [
   {id:"acupuncture", name:"Acupuncture", cat:"Treatments",
     docs:["zhang"],
     fees:[["Long (20 min)","$25.00","$67.20"],["Prolonged (40 min)","$25.00","$106.70"]],
-    journey:[["doctor","With your doctor","20-40 min","A GP-led acupuncture session as part of your care plan."]],
+    journey:[["doctor","Acupuncture session","20-40 min","A GP-led acupuncture session as part of your care plan."]],
     reasons:["A GP-delivered option for pain and other conditions","Integrated with your general practice care","Flat, affordable out-of-pocket fee"]},
   {id:"minor", name:"Minor procedures (cryotherapy, dressings, ear syringing, ECG)", cat:"Minor procedures",
     docs:["firth","sivanesan","saadatian","patel","kamale","alfayadh","vlam","burdick","tennakoon","zhang","hodgson","lui","lam"],
     fees:[["Simple","$40.00","$79.75"],["Intermediate","$50.00","$89.75"],["Complex","$60.00","$99.75"]],
-    journey:[["nurse","With the nurse","10-20 min","Many minor procedures are done by our nurses in the treatment room."],["doctor","Doctor if required","as needed","Some procedures are performed or reviewed by your GP."]],
+    journey:[["nurse","Procedure","10-20 min","Many minor procedures are done by our nurses in the treatment room."],["doctor","Doctor if required","as needed","Some procedures are performed or reviewed by your GP."]],
     reasons:["Common issues handled quickly, without a referral","Concession pricing available","Performed by most of our doctors and nurses"]}
 ];
 
@@ -207,7 +210,7 @@ const SERVICES = [
     reasons:["See your own GP for most of your pregnancy care","Fewer hospital trips through shared-care arrangements","Continuity of care before and after your baby arrives"]},
   {id:"postnatal", name:"Postnatal check (mother & baby)", cat:"Women's health", icon:"female",
     blurb:"After your baby arrives, a postnatal check looks after you both. The doctor examines your baby first, then checks on you, and the nurse follows up with immunisations, feeding and wellbeing support.",
-    journey:[["doctor","Baby's check with the doctor","20 min","Your doctor examines your baby: growth, feeding, development and any concerns."],["doctor","Mother's check with the doctor","10 min","A check on your own recovery, mood and wellbeing."],["nurse","With the nurse","20 min","Immunisations, measurements and practical feeding and settling support."]],
+    journey:[["doctor","Baby's check with the doctor","20 min","Your doctor examines your baby: growth, feeding, development and any concerns."],["doctor","Mother's check with the doctor","10 min","A check on your own recovery, mood and wellbeing."],["nurse","Nurse check","20 min","Immunisations, measurements and practical feeding and settling support."]],
     reasons:["One appointment covers both mother and baby","Immunisations kept on track from the start","A team that supports your recovery, not just the baby's progress"]},
   {id:"immunisation", name:"Immunisations & travel vaccines", cat:"Prevention", icon:"clipboard",
     blurb:"Timely vaccinations strengthen your immune system, with child and adult immunisation programs protecting the whole family. Travelling overseas? Our doctors provide up-to-date travel medicine advice, vaccinations and any medicines you need for the journey.",
@@ -231,6 +234,17 @@ const SERVICES = [
 /* Consultation out-of-pocket fees, effective 1 July 2026.
    Weekday amounts apply to non-concession patients;
    concession cardholders and children 15 and under are bulk billed on weekdays. */
+/* PRACTICE NEWS (About page): newest first. tag: "Award", "Community" or "Practice update".
+   date: "Month YYYY". image is optional (path under images/). */
+const NEWS = [
+  {date:"October 2026", tag:"Award", title:"Dr Naba Alfayadh named RACGP Victoria GP in Training of the Year",
+    text:"Dr Naba Alfayadh was named GP in Training of the Year at the 2026 RACGP Victoria Awards. Naba wanted to acknowledge the support of Dr Katherine Firth, her supervisor, and Dr Christine Burdick, her co-registrar, who have supported her throughout the year clinically and personally. She also acknowledged the flexibility and culture at Balwyn Central Medical and ICO Health Group, which enabled her participation in the Antisemitism Royal Commission and the United Nations Conference.",
+    link:"https://newshub.medianet.com.au/2026/10/victorian-gps-recognised-for-outstanding-contribution-to-community-health/175892/", linkText:"Read the RACGP announcement"},
+  {date:"September 2026", tag:"Award", title:"Dr Naba Alfayadh inducted into the Victorian Honour Roll of Women",
+    text:"Dr Naba Alfayadh was inducted into the Victorian Honour Roll of Women 2026 as an emerging leader. She was recognised for starting four social equity ventures, including Rahma Health, which supports Arabic-speaking families through the first five years of a child's life.",
+    link:"https://www1.racgp.org.au/newsgp/professional/exemplary-gps-inducted-into-victorian-honour-roll", linkText:"Read the newsGP article"}
+];
+
 const CONSULT_FEES = [
   ["Brief consultation","$42","$50","$55"],
   ["Standard consultation","$42","$50","$55"],
@@ -248,8 +262,14 @@ const serviceById = id => SERVICES.find(s => s.id === id);
 function siteLabel(sites){ return sites.map(s => s + ' Whitehorse Rd').join(' & '); }
 function initials(name){ return name.replace('Dr ','').split(' ').map(w => w[0]).slice(0,2).join(''); }
 
+const ROLE_LABEL = {doctor:'Doctor', nurse:'Nurse', collector:'Pathology collector', employer:'Your employer'};
 function journeyHTML(steps){
-  return `<div class="journey">${steps.map(s=>`<div class="jstep ${s[0]}"><div class="jwho">${s[0]==='nurse'?'With the nurse':(s[0]==='doctor'?'With your doctor':(s[0]==='collector'?'With the pathology collector':(s[0]==='employer'?'With your employer':s[1])))} <span class="jtime">${s[2]}</span></div><div class="jwhat"><strong>${s[1]}.</strong> ${s[3]}</div></div>`).join('')}</div>`;
+  // a step time with minutes is an appointment length; anything else ("same visit", "as needed") is shown as is
+  return `<div class="journey">${steps.map(s=>{
+    const who = ROLE_LABEL[s[0]] || s[1];
+    const label = /\d.*min/.test(s[2]) ? `Appointment duration (${who.toLowerCase()})` : who;
+    return `<div class="jstep ${s[0]}"><div class="jwho">${label} <span class="jtime">${s[2]}</span></div><div class="jwhat"><strong>${s[1]}.</strong> ${s[3]}</div></div>`;
+  }).join('')}</div>`;
 }
 function reasonsHTML(list){
   return `<ul class="reasons">${list.map(r=>`<li><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>${r}</li>`).join('')}</ul>`;
