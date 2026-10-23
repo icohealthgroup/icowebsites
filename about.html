@@ -219,7 +219,9 @@
   if(!NEWS.length){ document.getElementById("news").hidden = true; return; }
   list.innerHTML = NEWS.map(function(n){
     return "<article class=\"news-item reveal\">" +
-      (n.image ? "<img src=\"" + n.image + "\" alt=\"" + (n.alt || "") + "\" loading=\"lazy\">" : "") +
+      (n.images && n.images.length ? "<div class=\"news-gallery" + (n.images.length === 1 ? " single" : "") + "\">" + n.images.map(function(im){
+        return "<a href=\"" + im.src + "\" target=\"_blank\" rel=\"noopener\" style=\"flex:" + (im.w / im.h).toFixed(3) + "\"><img src=\"" + im.src + "\" width=\"" + im.w + "\" height=\"" + im.h + "\" alt=\"" + im.alt + "\" loading=\"lazy\"><span class=\"sr-only\"> (opens full size in a new tab)</span></a>";
+      }).join("") + "</div>" : "") +
       "<div><span class=\"k\">" + n.tag + " · " + n.date + "</span><h3>" + n.title + "</h3><p>" + n.text + "</p>" +
         (n.link ? "<p style=\"margin-top:1rem\"><a class=\"arrow-link\" href=\"" + n.link + "\" target=\"_blank\" rel=\"noopener\">" + (n.linkText || "Read more") + " <span aria-hidden=\"true\">→</span><span class=\"sr-only\"> (opens in a new tab)</span></a></p>" : "") + "</div>" +
     "</article>";

@@ -235,14 +235,18 @@ const SERVICES = [
    Weekday amounts apply to non-concession patients;
    concession cardholders and children 15 and under are bulk billed on weekdays. */
 /* PRACTICE NEWS (About page): newest first. tag: "Award", "Community" or "Practice update".
-   date: "Month YYYY". image is optional (path under images/). */
+   date: "Month YYYY". images is optional: [{src, w, h, alt}], shown uncropped in one row. */
 const NEWS = [
   {date:"October 2026", tag:"Award", title:"Dr Naba Alfayadh named RACGP Victoria GP in Training of the Year",
-    text:"Dr Naba Alfayadh was named GP in Training of the Year at the 2026 RACGP Victoria Awards. Naba wanted to acknowledge the support of Dr Katherine Firth, her supervisor, and Dr Christine Burdick, her co-registrar, who have supported her throughout the year clinically and personally. She also acknowledged the flexibility and culture at Balwyn Central Medical and ICO Health Group, which enabled her participation in the Antisemitism Royal Commission and the United Nations Conference.",
-    link:"https://newshub.medianet.com.au/2026/10/victorian-gps-recognised-for-outstanding-contribution-to-community-health/175892/", linkText:"Read the RACGP announcement"},
+    text:"Dr Naba Alfayadh was named GP in Training of the Year at the 2026 RACGP Victoria Awards. Naba wanted to acknowledge the support of Dr Katherine Firth, her supervisor, and Dr Christine Burdick, her co-registrar, who have supported her throughout the year clinically and personally. She also acknowledged the flexibility and culture at Balwyn Central Medical and ICO Health Group, which enabled her participation in the Antisemitism Royal Commission and the United Nations Conference. Dr Firth, who has supervised GP registrars at Balwyn Central Medical for many years, joined Naba at the ceremony.",
+    link:"https://newshub.medianet.com.au/2026/10/victorian-gps-recognised-for-outstanding-contribution-to-community-health/175892/", linkText:"Read the RACGP announcement",
+    images:[{src:"images/news/racgp-gpit-tile.jpg", w:940, h:788, alt:"2026 RACGP Awards, Victoria: General Practitioner in Training of the Year, Dr Naba Alfayadh"},
+      {src:"images/news/racgp-naba-firth.jpg", w:900, h:1200, alt:"Dr Katherine Firth, GP registrar supervisor at Balwyn Central Medical, with Dr Naba Alfayadh at the RACGP Victoria Awards"},
+      {src:"images/news/racgp-group.jpg", w:1200, h:900, alt:"Dr Naba Alfayadh with colleagues and supporters at the RACGP Victoria Awards"}]},
   {date:"September 2026", tag:"Award", title:"Dr Naba Alfayadh inducted into the Victorian Honour Roll of Women",
     text:"Dr Naba Alfayadh was inducted into the Victorian Honour Roll of Women 2026 as an emerging leader. She was recognised for starting four social equity ventures, including Rahma Health, which supports Arabic-speaking families through the first five years of a child's life.",
-    link:"https://www1.racgp.org.au/newsgp/professional/exemplary-gps-inducted-into-victorian-honour-roll", linkText:"Read the newsGP article"}
+    link:"https://www1.racgp.org.au/newsgp/professional/exemplary-gps-inducted-into-victorian-honour-roll", linkText:"Read the newsGP article",
+    images:[{src:"images/news/honour-roll-naba.jpg", w:823, h:1200, alt:"Dr Naba Alfayadh at the Victorian Honour Roll of Women 2026"}]}
 ];
 
 const CONSULT_FEES = [
